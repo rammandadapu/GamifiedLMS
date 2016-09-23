@@ -1,0 +1,74 @@
+header {
+  background-color: #10a2a2;
+  text-transform: uppercase;
+  height: 75px;
+  font-family: sans-serif;
+  padding-left: 10px; }
+  header img {
+    height: 40px;
+    padding-top: 18px;
+    box-sizing: content-box;
+    float: left; }
+  header h1 {
+    font-size: 20px;
+    line-height: 80px;
+    font-weight: 100; }
+#mainNav {
+  background-color: #10a2a2;
+}
+#twitter-widget-0 {
+  width: 1200px !important;
+}
+.btn-basics {
+  border: none;
+  cursor: pointer;
+  border-radius: 3px;
+  margin: 15px;
+  font-size: 15px;
+  font-weight: 300;
+  opacity: 0.9;
+  box-shadow: 1px 1px 2px grey; }
+
+.btn-w {
+  width: 350px; }
+
+.btn-w-content {
+  width: 170px; }
+
+.bg-org {
+  background: linear-gradient(orange, #ff6a1a); }
+
+.bg-ylw {
+  background: linear-gradient(yellow, #ffcc00); }
+
+.bg-grn {
+  background: linear-gradient(yellow, #00cc00); }
+
+.bg-blue {
+  background: linear-gradient(#33ccff, #1a53ff); }
+
+.btn-view {
+  background-color: #33ccff;
+  font-size: 12px;
+  width: 55px; }
+
+.input-bsc {
+  width: 250px;
+  border-radius: 5px; }
+
+.search-box {
+  margin-top: 15px; }
+
+.content-layout {
+  background-color: black;
+  height: 250px;
+  margin-left: 30px;
+  border-radius: 15px;
+  margin-bottom: 20px; }
+  .content-layout .course-ov {
+    background-color: white;
+    height: 200px;
+    margin-top: 25px;
+    margin-left: 75px; }
+
+/*# sourceMappingURL=application.css.map */

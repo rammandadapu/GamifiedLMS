@@ -22,7 +22,7 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 
     <!-- Theme CSS -->
-    <link href="css/application.css" rel="stylesheet">
+    <!--<link href="css/application.css" rel="stylesheet">-->
     <link href="css/agency.min.css" rel="stylesheet">
     <link href="css/myagency.css" rel="stylesheet">
 
@@ -41,7 +41,7 @@
 <body id="page-top" class="index" ng-app="" ng-controller="personController">
 
     <!-- Navigation -->
-    <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top header-nav">
+    <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header page-scroll">
@@ -58,16 +58,13 @@
                         <a href="#page-top"></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#register">Register</a>
-                    </li>
-                    <li>
                         <a class="page-scroll" href="#portfolio">Courses</a>
                     </li>                   
                     <li>
                         <a class="page-scroll" href="#about">About Us</a>
                     </li>                    
                     <li>
-                        <a class="page-scroll" href="#team">Contact Us</a>
+                        <a class="page-scroll" href="#contact">Contact Us</a>
                     </li>
                 </ul>
             </div>
@@ -77,7 +74,7 @@
     </nav>
 
     <!-- Header -->
-    <section id="register">
+    <header>
         <div class="container">
             <div class="intro-text">
                 <div class="container">
@@ -118,7 +115,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </header>
 
     <!-- Portfolio Grid Section -->
     <section id="portfolio" class="bg-light-gray">
@@ -126,61 +123,95 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">We have many new courses like:</h2>
-                    <h3 class="section-subheading text-muted">Front end development, Back end development</h3>
+                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
                 </div>
             </div>
-    <div class="row">
-      <div class="col-xs-4">
-        <button class="bg-ylw btn-basics btn-w">COURSES</button>
-      </div>
-      <div class="col-xs-4">
-      <button class="bg-org btn-basics btn-w">PERSONAL BADGES</button>
-      </div>
-      <div class="col-xs-4 search-box">
-        <input type="search" name="coursesearch" class="input-bsc" placeholder="search">
-        <button type="button btn-w">Go!</button>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-4">
-        <button class="bg-grn btn-basics btn-w-content">YOUR COURSES</button>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-11 content-layout">
-        <div classs="row">
-          <div class="col-xs-3 course-ov">
-            <button class="btn-basics btn-view pull-right">VIEW</button>
-          </div>
-          <div class="col-xs-3 course-ov">
-            <button class="btn-basics btn-view pull-right">VIEW</button>
-          </div>
-          <div class="col-xs-3 course-ov">
-            <button class="btn-basics btn-view pull-right">VIEW</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-4">
-        <button class="bg-blue btn-basics btn-w-content">TRENDING COURSES</button>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-11 content-layout">
-        <div classs="row">
-          <div class="col-xs-3 course-ov">
-            <button class="btn-basics btn-view pull-right">ENROLL</button>
-          </div>
-          <div class="col-xs-3 course-ov">
-            <button class="btn-basics btn-view pull-right">ENROLL</button>
-          </div>
-          <div class="col-xs-3 course-ov">
-            <button class="btn-basics btn-view pull-right">ENROLL</button>
-          </div>
-        </div>
-      </div>
-    </div>
+            <div class="row">
+                <div class="col-md-4 col-sm-6 portfolio-item">
+                    <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content">
+                                <i class="fa fa-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="img/portfolio/roundicons.png" class="img-responsive" alt="">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>Round Icons</h4>
+                        <p class="text-muted">Graphic Design</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 portfolio-item">
+                    <a href="#portfolioModal2" class="portfolio-link" data-toggle="modal">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content">
+                                <i class="fa fa-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="img/portfolio/startup-framework.png" class="img-responsive" alt="">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>Startup Framework</h4>
+                        <p class="text-muted">Website Design</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 portfolio-item">
+                    <a href="#portfolioModal3" class="portfolio-link" data-toggle="modal">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content">
+                                <i class="fa fa-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="img/portfolio/treehouse.png" class="img-responsive" alt="">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>Treehouse</h4>
+                        <p class="text-muted">Website Design</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 portfolio-item">
+                    <a href="#portfolioModal4" class="portfolio-link" data-toggle="modal">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content">
+                                <i class="fa fa-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="img/portfolio/golden.png" class="img-responsive" alt="">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>Golden</h4>
+                        <p class="text-muted">Website Design</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 portfolio-item">
+                    <a href="#portfolioModal5" class="portfolio-link" data-toggle="modal">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content">
+                                <i class="fa fa-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="img/portfolio/escape.png" class="img-responsive" alt="">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>Escape</h4>
+                        <p class="text-muted">Website Design</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 portfolio-item">
+                    <a href="#portfolioModal6" class="portfolio-link" data-toggle="modal">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content">
+                                <i class="fa fa-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="img/portfolio/dreams.png" class="img-responsive" alt="">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>Dreams</h4>
+                        <p class="text-muted">Website Design</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -271,15 +302,15 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">Our Amazing Team</h2>
-                    <h3 class="section-subheading text-muted">MS Software Engineering Students</h3>
+                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-sm-4">
                     <div class="team-member">
                         <img src="img/team/1.jpg" class="img-responsive img-circle" alt="">
-                        <h4>Divya</h4>
-                        <p class="text-muted">Front End Developer</p>
+                        <h4>Kay Garland</h4>
+                        <p class="text-muted">Lead Designer</p>
                         <ul class="list-inline social-buttons">
                             <li><a href="#"><i class="fa fa-twitter"></i></a>
                             </li>
@@ -290,26 +321,11 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-4">
                     <div class="team-member">
                         <img src="img/team/2.jpg" class="img-responsive img-circle" alt="">
-                        <h4>Nivedhitha</h4>
-                        <p class="text-muted">Front End Developer</p>
-                        <ul class="list-inline social-buttons">
-                            <li><a href="https://twitter.com/hey_nivi" target="_blank"><i class="fa fa-twitter"></i></a>
-                            </li>
-                            <li><a href="https://www.facebook.com/nivedhitha.venkatachalam" target="_blank"><i class="fa fa-facebook"></i></a>
-                            </li>
-                            <li><a href="https://www.linkedin.com/in/nivedhithavenkatachalam" target="_blank"><i class="fa fa-linkedin"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="team-member">
-                        <img src="img/team/3.jpg" class="img-responsive img-circle" alt="">
-                        <h4>Ram</h4>
-                        <p class="text-muted">Back End Developer</p>
+                        <h4>Larry Parker</h4>
+                        <p class="text-muted">Lead Marketer</p>
                         <ul class="list-inline social-buttons">
                             <li><a href="#"><i class="fa fa-twitter"></i></a>
                             </li>
@@ -320,11 +336,11 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-4">
                     <div class="team-member">
-                        <img src="img/team/4.jpg" class="img-responsive img-circle" alt="">
-                        <h4>Sai</h4>
-                        <p class="text-muted">Back End Developer</p>
+                        <img src="img/team/3.jpg" class="img-responsive img-circle" alt="">
+                        <h4>Diana Pertersen</h4>
+                        <p class="text-muted">Lead Developer</p>
                         <ul class="list-inline social-buttons">
                             <li><a href="#"><i class="fa fa-twitter"></i></a>
                             </li>
@@ -338,12 +354,8 @@
             </div>
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <p class="large text-muted">Connect with us on social media to get more interesting information about our project! Check out the latest tweets on Gamification.</p>
+                    <p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
                 </div>
-            </div>
-            <div class="row">
-              <a class="twitter-timeline"  href="https://twitter.com/hashtag/gamification" data-widget-id="779149233563676672">#gamification Tweets</a>
-              <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
             </div>
         </div>
     </section>
