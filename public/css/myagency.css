@@ -4,3 +4,25 @@
     margin-left: 200px;
   }
 }
+
+.course-text-content {
+	margin: 20px;
+  	padding: 10px;
+  	width: 300px;
+  	height: 279px;
+  	overflow: auto;
+  	border: 1px solid #d4d4d4;
+  	border-radius: 2px;
+  }
+  
+.test-questions {
+	margin: 20px 0 20px 0;
+	padding: 10px;
+	width: 832px;
+	border: 1px solid #d4d4d4;
+  	border-radius: 2px;
+}
+ 
+.embed-responsive {
+	margin: 20px;
+}

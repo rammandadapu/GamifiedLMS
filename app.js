@@ -30,6 +30,9 @@ app.post('/signup', user.insertUser);
 //app.post('/signout',user.signout);
 //app.post('/signIn', user.validateUser);
 
+//course
+app.get('/topicDetail:id', user.topicDetail); //change the route after getting the backend
+
 http.createServer(app).listen(app.get('port'), function(){
 	  console.log('Express server listening on port ' + app.get('port'));
 	});

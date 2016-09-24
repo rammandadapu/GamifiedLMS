@@ -51,5 +51,7 @@ exports.insertUser=function(req,res){
 		}			
 };
 
-
+exports.topicDetail = function(req, res){
+	  res.render('topicDetail', { title: 'Gamified LMS' });
+	};
 
