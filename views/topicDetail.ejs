@@ -24,7 +24,8 @@
     <!-- Theme CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/application.css" rel="stylesheet">
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">        
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="css/agency.min.css" rel="stylesheet">        
     <link href="css/myagency.css" rel="stylesheet">  
 
 
@@ -42,7 +43,7 @@
 <body id="page-top" ng-app="" ng-controller="topicController">
 
             <!-- Navigation -->
-        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-static-top header-nav" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -50,7 +51,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">SB Admin v2.0</a>
+                <a class="navbar-brand" href="index.html">Gamified Learning</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -268,15 +269,15 @@
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-8">
-                <div class="panel panel-default" style="margin: 20px 0 0 0">
-                    <div class="panel-heading">
-                        <i class="fa fa-bar-chart-o fa-fw"></i> Course: Java
+                <div class="panel panel-default">
+                    <div class="panel-heading bg-ylw">
+                        Course: Java
                     </div>
 
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-lg-5">
-                                <div class="course-text-content">Primitive types are the most basic data types available within the Java language.<br><br> There are 8: boolean , byte , char , short , int , long , float and double . <br><br>These types serve as the building blocks of data manipulation in Java. <br><br>Such types serve only one purpose — containing pure, simple values of a kind.</div>
+                                <div class="course-text-content">Primitive types are the most basic data types available within the Java language.<br><br> There are 8: boolean , byte , char , short , int , long , float and double . <br><br>These types serve as the building blocks of data manipulation in Java. <br><br>Such types serve only one purpose — containing pure, simple values of a kind.<br><br><b>byte:</b> The byte data type is an 8-bit signed two's complement integer. It has a minimum value of -128 and a maximum value of 127 (inclusive). The byte data type can be useful for saving memory in large arrays, where the memory savings actually matters. They can also be used in place of int where their limits help to clarify your code; the fact that a variable's range is limited can serve as a form of documentation.</div>
                             </div>
                             <div class="col-lg-7">
                                 <div class="embed-responsive embed-responsive-16by9">
@@ -293,16 +294,45 @@
 
         <div class="row">    
             <div class="col-lg-8">                        
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    QUIZ - Earn Badges!
-                                </div>
-                            <div class="panel-body">
-                                blah blah
-                                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading bg-org">
+                        QUIZ - Earn Badges!
+                    </div>
+                <div class="panel-body">
+                    <div class="test-question-block">
+                        <div class="row">
+                            <div class="multiple-choice-question">
+                                Question 1: What is the minimum value of a byte?
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <button type="button" class="btn btn-default multiple-choice-option">
+                                    A) -127
+                                </button>
+                            </div>
+                            <div class="col-lg-6">
+                                <button type="button" class="btn btn-default multiple-choice-option">
+                                    B) 0
+                                </button>
                             </div>                            
                         </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <button type="button" class="btn btn-default multiple-choice-option">
+                                    C) 127
+                                </button>
+                            </div>
+                            <div class="col-lg-6">
+                                <button type="button" class="btn btn-default multiple-choice-option">
+                                    D) 128
+                                </button>
+                            </div>                            
                         </div>
+                    </div>
+                </div>                            
+            </div>
+        </div>
     </div>
 </body>
 </html>
