@@ -33,7 +33,9 @@ exports.insertUser=function(req,res){
 				query["email"] = email;
 				query["password"] = pswd;
 
+
 				collection.insert(query, {w:1}, function(err, result) {
+
 			    	if (err) {
 				        //console.log(err);
 						logger.error('Error in inserting the user details. Error:', err);
@@ -58,5 +60,5 @@ exports.insertUser=function(req,res){
 
 exports.topicDetail = function(req, res){
 	  res.render('topicDetail', { title: 'Gamified LMS' });
-	};
+};
 
