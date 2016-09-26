@@ -1,5 +1,6 @@
 var ejs = require("ejs");
 var mongodb = require('mongodb');
+var logger = require('../logger/logger');
 var ObjectId = require('mongodb').ObjectID;
 
 var url = "mongodb://localhost:27017/GamifiedLMSDB";
@@ -18,10 +19,11 @@ exports.insertUser=function(req,res){
 		{				
 		MongoClient.connect(url, function (err, db) {
 			  if (err) {
-			    console.log('Unable to connect to the mongoDB server. Error:', err);
+			    //console.log('Unable to connect to the mongoDB server. Error:', err);
+				logger.error('Unable to connect to the mongoDB server. Error:', err);
 			  } else {		 
-			    console.log('Connection established to', url);
-			 
+			    //console.log('Connection established to', url);
+				  logger.debug('Connection established to', url);
 			    var collection = db.collection('savedSearches');	
 			    
 				var query = {};
@@ -30,14 +32,16 @@ exports.insertUser=function(req,res){
 				query["lname"] = lname;
 				query["email"] = email;
 				query["password"] = pswd;
-				
+
 				collection.insert(query, {w:1}, function(err, result) {
 			    	if (err) {
-				        console.log(err);
+				        //console.log(err);
+						logger.error('Error in inserting the user details. Error:', err);
 				        res.end("error");
 				      } else {
-				          console.log('Inserted:', result);
-				          res.end("successful");			   
+							logger.info('Inserted:', result);
+				          //console.log('Inserted:', result);
+				          res.end("successful");
 				      }
 			    	db.close();
 			    });
@@ -46,7 +50,8 @@ exports.insertUser=function(req,res){
 		}
 	else
 		{
-			console.log("invalid input");
+			//console.log("invalid input");
+			logger.error('Invalid Input of user details');
 			res.send({"Status":"Error"});
 		}			
 };

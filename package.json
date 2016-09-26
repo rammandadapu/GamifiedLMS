@@ -11,6 +11,7 @@
     "mongodb":"*",
     "body-parser":"*",
     "jsforce":"*",
-    "url":"*"
+    "url":"*",
+    "winston": "^2.2.0"
   }
 }

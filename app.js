@@ -1,7 +1,8 @@
 var express = require('express') 
   , http = require('http')  
   , user = require('./routes/user')
-  , path = require('path');
+  , path = require('path')
+	, logger = require('./logger/logger');
 
 
 var app = express();
@@ -34,6 +35,7 @@ app.post('/signup', user.insertUser);
 app.get('/topicDetail:id', user.topicDetail); //change the route after getting the backend
 
 http.createServer(app).listen(app.get('port'), function(){
-	  console.log('Express server listening on port ' + app.get('port'));
+	  // console.log('Express server listening on port ' + app.get('port'));
+	logger.info("Express server listening on port: ",app.get('port'));
 	});
 
