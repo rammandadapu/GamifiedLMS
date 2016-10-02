@@ -1,0 +1,29 @@
+.search-box {
+	float: right;
+}
+.course-heading {
+	text-align: center;
+	margin: 15px;
+}
+.btn-rnd {
+	border-radius: 15px;
+	margin: 0; 
+}
+.lock {
+	width: 15px;
+}
+.column-bar-h {
+	width: 85px;
+	height: 2px;
+	display: inline-block;
+	background-color: grey;
+}
+.column-bar-v {
+	width: 2px;
+	height: 150px;
+	display: inline-block;
+	background-color: grey;
+}
+.btn-rect {
+	margin: 0;
+}

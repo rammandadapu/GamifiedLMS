@@ -55,3 +55,7 @@ exports.topicDetail = function(req, res){
 	  res.render('topicDetail', { title: 'Gamified LMS' });
 	};
 
+exports.courseDetails = function(req, res){
+	  res.render('courseDetails', { title: 'Gamified Courses' });
+	};
+

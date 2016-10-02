@@ -27,7 +27,7 @@
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <link href="css/agency.min.css" rel="stylesheet">        
     <link href="css/myagency.css" rel="stylesheet">  
-
+    <link href="css/coursedetails.css" rel="stylesheet">
 
     <script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
 
@@ -40,7 +40,7 @@
 
 </head>
 
-<body id="page-top" ng-app="" ng-controller="topicController">
+<body id="page-top" ng-app="" ng-controller="courseController" style="overflow: hidden">
 
             <!-- Navigation -->
         <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-static-top header-nav" role="navigation" style="margin-bottom: 0">
@@ -268,71 +268,34 @@
 
     <div id="page-wrapper">
         <div class="row">
-            <div class="col-lg-8">
-                <div class="panel panel-default">
-                    <div class="panel-heading bg-ylw">
-                        Course: Java
-                    </div>
-
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-lg-5">
-                                <div class="course-text-content">Primitive types are the most basic data types available within the Java language.<br><br> There are 8: boolean , byte , char , short , int , long , float and double . <br><br>These types serve as the building blocks of data manipulation in Java. <br><br>Such types serve only one purpose — containing pure, simple values of a kind.<br><br><b>byte:</b> The byte data type is an 8-bit signed two's complement integer. It has a minimum value of -128 and a maximum value of 127 (inclusive). The byte data type can be useful for saving memory in large arrays, where the memory savings actually matters. They can also be used in place of int where their limits help to clarify your code; the fact that a variable's range is limited can serve as a form of documentation.</div>
-                            </div>
-                            <div class="col-lg-7">
-                                <div class="embed-responsive embed-responsive-16by9">
-                                    <iframe class="embed-responsive-item" src="https://www.youtube.com/v/31crA53Dgu0"></iframe>
-                                </div>
-             
-                            </div>
-                        </div>
-
-                    </div>
+            <div class="col-xs-7">
+                <div class="course-heading">
+                    JAVA
                 </div>
-            </div>            
-        </div>
-
-        <div class="row">    
-            <div class="col-lg-8">                        
-                <div class="panel panel-default">
-                    <div class="panel-heading bg-org">
-                        QUIZ - Earn Badges!
-                    </div>
-                <div class="panel-body">
-                    <div class="test-question-block">
-                        <div class="row">
-                            <div class="multiple-choice-question">
-                                Question 1: What is the minimum value of a byte?
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <button type="button" class="btn btn-default multiple-choice-option">
-                                    A) -127
-                                </button>
-                            </div>
-                            <div class="col-lg-6">
-                                <button type="button" class="btn btn-default multiple-choice-option">
-                                    B) 0
-                                </button>
-                            </div>                            
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <button type="button" class="btn btn-default multiple-choice-option">
-                                    C) 127
-                                </button>
-                            </div>
-                            <div class="col-lg-6">
-                                <button type="button" class="btn btn-default multiple-choice-option">
-                                    D) 128
-                                </button>
-                            </div>                            
-                        </div>
-                    </div>
-                </div>                            
+                <div style="height: 480px; background-color: #ccffcc;padding: 50px 0 0 50px">
+                    <button class="bg-ylw btn-basics btn-rnd">1. Data Types</button>
+                    <div class="column-bar-h"></div>
+                    <button class="bg-ylw btn-basics btn-rnd">2. Methods</button>
+                    <div class="column-bar-h"></div>
+                    <button class="bg-blue btn-basics btn-rect">Level 1: Challenge &nbsp<img src="img/coursedetails/lock.png" class="lock"></button>
+                    <button class="bg-grn btn-basics btn-rnd">3. Classes</button>
+                    <button class="bg-grn btn-basics btn-rnd">4. Interfaces</button>
+                    <button class="bg-blue btn-basics btn-rect">Level 2: Challenge&nbsp<img src="img/coursedetails/lock.png" class="lock"></button>
+                </div>
+            </div> 
+            <div class="col-xs-5">
+            <div class="row" style="margin-bottom: 9px">
+                <div class="search-box">
+                    <input type="search" name="coursesearch" class="input-bsc" placeholder="search">
+                    <button type="button btn-w">Go!</button>
+                </div>
             </div>
+            <div class="row">
+                <div style="width: 415px;height: 480px; background-color: #ccffcc; margin:0 auto">
+                    
+                </div>
+            </div>
+            </div>           
         </div>
-    </div>
 </body>
 </html>
