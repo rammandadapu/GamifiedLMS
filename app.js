@@ -39,6 +39,7 @@ app.get('/courseDetails', user.courseDetails);
 //CMS
 //course
 app.post('/course', course.createCourse);
+app.post('/course/:courseid/module',course.createModule)
 
 http.createServer(app).listen(app.get('port'), function () {
     // console.log('Express server listening on port ' + app.get('port'));
