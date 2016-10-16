@@ -3,7 +3,8 @@ var express = require('express')
     , user = require('./routes/user')
     , course = require('./routes/course')
     , logger = require('./logger/logger')
-    , path = require('path');
+    , path = require('path')
+    , courseProgress = require('./routes/courseProgress');
 
 
 var app = express();
@@ -39,7 +40,9 @@ app.get('/courseDetails', user.courseDetails);
 //CMS
 //course
 app.post('/course', course.createCourse);
-app.post('/course/:courseid/module',course.createModule)
+app.post('/course/:courseid/module',course.createModule);
+
+app.post('/courseProgress',courseProgress.createCourseProgress);
 
 http.createServer(app).listen(app.get('port'), function () {
     // console.log('Express server listening on port ' + app.get('port'));
