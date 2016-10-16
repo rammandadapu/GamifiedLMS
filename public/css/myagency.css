@@ -39,3 +39,17 @@
 .embed-responsive {
 	margin: 20px;
 }
+
+.img-course {
+	width: 260px;
+	height: 200px;
+	top: 0;
+	left: 0;
+	position: absolute;
+}
+
+.course-thumbnail-button {
+	position: absolute;
+	top: 0;
+	left: 175px;
+}
