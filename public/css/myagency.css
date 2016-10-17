@@ -16,7 +16,8 @@
   }
   
 .test-question-block {
-	margin: 0 0 20px 0;
+	clear: both;
+	margin: 10px 10px 20px 10px;
 	padding: 10px;
 	width: 832px;
 }
@@ -30,6 +31,10 @@
 	margin:10px;
 	padding:5px;
 	width: 350px;
+}
+
+.bucket-choice {
+	width: 200px;
 }
  
 .panel-default {
@@ -52,4 +57,38 @@
 	position: absolute;
 	top: 0;
 	left: 175px;
+}
+
+.source-bucket {
+    min-height: 20px;
+    list-style-type: none;
+    margin: 20px;
+    padding: 5px 0 0 0;    
+    margin-right: 10px;
+  }
+  .result-bucket-header {
+    border: 5px solid #ff6a1a;
+    width: 142px;
+    min-height: 20px;
+    list-style-type: none;
+    margin: 20px;
+    padding: 5px 0 0 0;
+    margin-right: 10px;
+  }
+  .result-bucket {
+    border: 5px solid #ff6a1a;
+    width: 142px;
+    min-height: 20px;
+    list-style-type: none;
+    margin: 20px;
+    padding: 5px 0 0 0;
+    float: left;
+    margin-right: 10px;
+  }
+  .source-bucket li, .result-bucket li {
+    margin: 0 5px 5px 5px;
+    padding: 5px;
+  }
+  ul.source-bucket li {
+    display:inline;
 }

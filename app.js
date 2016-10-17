@@ -36,6 +36,9 @@ app.post('/signup', user.insertUser);
 app.get('/topicDetail:id', user.topicDetail); //change the route after getting the backend
 app.get('/courseDetails', user.courseDetails);
 
+app.get('/quiz', function(req,res) {
+res.render("quiz.ejs");
+});
 
 //CMS
 //course
