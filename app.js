@@ -3,7 +3,8 @@ var express = require('express')
     , user = require('./routes/user')
     , course = require('./routes/course')
     , logger = require('./logger/logger')
-    , path = require('path');
+    , path = require('path')
+    , courseProgress = require('./routes/courseProgress');
 
 
 var app = express();
@@ -35,11 +36,16 @@ app.post('/signup', user.insertUser);
 app.get('/topicDetail:id', user.topicDetail); //change the route after getting the backend
 app.get('/courseDetails', user.courseDetails);
 
+app.get('/quiz', function(req,res) {
+res.render("quiz.ejs");
+});
 
 //CMS
 //course
 app.post('/course', course.createCourse);
-app.post('/course/:courseid/module',course.createModule)
+app.post('/course/:courseid/module',course.createModule);
+
+app.post('/courseProgress',courseProgress.createCourseProgress);
 
 http.createServer(app).listen(app.get('port'), function () {
     // console.log('Express server listening on port ' + app.get('port'));

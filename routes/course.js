@@ -39,7 +39,7 @@ exports.createCourse = function (req, res) {
             });
         }
     });
-}
+};
 
 
 exports.createModule= function (req, res) {
@@ -57,7 +57,7 @@ exports.createModule= function (req, res) {
 
             console.log(module);
 
-            collection.insert(module, function (err, result) {
+            collection.insertOne(module, function (err, result) {
                 if (err) {
                     console.log(err);
                 } else {
@@ -88,7 +88,7 @@ linkModuletoCourse=function(courseid,moduleid){
 
             var query  = {};
             query["_id"] = new ObjectId(courseid);
-            var newModules={$addToSet: { modules: { $each: [ moduleid ] } } }
+            var newModules={$addToSet: { modules: { $each: [ moduleid ] } } };
             collection.updateOne(query,newModules, function (err, result) {
                 if (err) {
                     console.log('Hello');
