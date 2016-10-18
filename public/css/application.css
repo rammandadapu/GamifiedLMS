@@ -36,17 +36,23 @@ header {
   width: 170px; }
 
 .bg-org {
-  background: linear-gradient(orange, #ff6a1a); }
+  background: linear-gradient(orange, #ff6a1a); 
+}
 
 .bg-ylw {
-  background: linear-gradient(yellow, #ffcc00); }
+  background: linear-gradient(yellow, #ffcc00); 
+}
 
 .bg-grn {
-  background: linear-gradient(yellow, #00cc00); }
+  background: linear-gradient(yellow, #00cc00); 
+}
 
 .bg-blue {
-  background: linear-gradient(#33ccff, #1a53ff); }
-
+  background: linear-gradient(#33ccff, #1a53ff); 
+}
+.bg-pink {
+  background: linear-gradient(#ff3385, #ff4da6);
+}
 .btn-view {
   background-color: #33ccff;
   font-size: 12px;

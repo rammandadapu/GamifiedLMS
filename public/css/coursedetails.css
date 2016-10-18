@@ -27,3 +27,82 @@
 .btn-rect {
 	margin: 0;
 }
+.btn-blue{
+	background:linear-gradient(#33ccff,#1a93ff);
+}
+.elem-center{
+	display: block;
+	margin: auto;
+}
+.line {
+    width: 1px;
+    height: 60px;
+    background-color: black;
+}
+.topic-difficult {
+	background: linear-gradient(#ff0000, #ffcccc);
+}
+.topic-easy {
+	background: linear-gradient(#66ff00,#aaffbb);
+}
+.topic-medium {
+	background: linear-gradient(#ffff00,#ffffaa);
+}
+.pointer {
+	cursor: pointer;
+}
+.not-allowed {
+	cursor: not-allowed;
+}
+.course-box{
+	height: 480px; 
+	background: #ccffcc; 
+	box-shadow: 10px 10px 5px #888888; 
+	border-radius: 5px; 
+	padding: 20px; 
+	overflow:auto;
+}
+.user-box {
+	width: 415px;
+	height: 480px; 
+	background: #ccffcc; 
+	box-shadow: 10px 10px 5px #888888; 
+	border-radius: 5px; 
+	margin:0 auto;
+	overflow:auto;
+}
+.user-sm {
+	width: 390px;
+	height: 25px; 
+	background: #ffffff;
+	display: block;
+	margin: 20px auto;
+	overflow:auto;
+}
+.user-lg {
+	width: 390px;
+	height: 120px; 
+	background: #ffffff;
+	display: block;
+	margin: 20px auto;
+	overflow:auto;
+	background:#ccffcc;
+}
+.tbl-styling{
+	border:3px solid #10a2a2;
+}
+.tbl-styling caption{
+	text-align: center;
+	background-color: #ccffcc;
+}
+.tbl-styling th,.tbl-styling td{
+	padding: 5px;
+	text-align: left;
+} 
+.tbl-styling tr:nth-child(even){
+    background-color: #eee;
+}
+.tbl-styling tr:nth-child(odd) {
+   background-color:#fff;
+}
+

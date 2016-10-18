@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<div id="coursemodule" class="col-xs-7" ng-controller="courseController as cctrl">
+	<div class="course-heading">
+			{{cctrl.courseDetails.courseName}}
+	</div>
+	<div class="course-box">
+			<div ng-repeat="topic in cctrl.courseDetails.topics">
+				<div ng-if="$index!=0" class="line elem-center"></div>
+					<div class="panel panel-default elem-center" ng-click="cctrl.redirect($index)"style="width:200px;" ng-class="cctrl.getTopicPtr($index)">
+							<div class="panel-heading bg-blue" style="text-align:center">
+							{{$index + 1}}. {{topic.name | uppercase}} 
+								<i class="fa fa-lg" ng-class="cctrl.topicLock($index)" aria-hidden="true"></i>
+							</div>
+							<div class="panel-body" style="text-align:center" ng-class="cctrl.getColor($index)">
+							Difficulty: {{topic.difficulty}} 
+								<i class="fa fa-lg fa-exclamation-circle" aria-hidden="true"></i>
+							</div>
+					</div>
+					<div class="line elem-center"></div>
+					<button class="bg-grn btn-basics elem-center btn-rnd" ng-click="cctrl.redirect($index)" ng-class="cctrl.getTopicPtr($index)">LEVEL {{$index + 1}} CHALLENGE 
+						<i class="fa fa-lg" ng-class="cctrl.topicLock($index)" aria-hidden="true"></i>
+					</button>
+			</div>
+	</div>
+</div>

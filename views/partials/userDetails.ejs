@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<div id="usermodule" class="col-xs-5" ng-controller="userController as user">
+	<div class="row" style="margin-bottom: 9px">
+		<div class="search-box">
+			<input type="search" name="coursesearch" class="input-bsc" placeholder="search">
+			<button type="button" >Go!</button>
+		</div>
+	</div>
+	<div class="row user-box">
+		<div class="row user-sm" style="color:#777;background:#ccffcc;">
+			<div class="col-xs-6">TITLE: {{user.titl}}</div>
+			<div class="col-xs-6">SCORE: {{user.score}}</div>
+		</div>
+		<div class="row user-lg">
+			<table class="tbl-styling" style="width: 100%;">
+				<caption>BADGES</caption>
+				<tr>
+					<th class="bg-ylw">S.No</th>
+					<th class="bg-ylw">Names</th>
+					<th class="bg-ylw">Points</th>
+					<th class="bg-ylw">Badges</th>	
+				</tr>
+					<tr ng-repeat="badge in user.badges">
+						<td>{{$index+1}}</td>
+						<td>{{badge.name}}</td>
+						<td>{{badge.points}}</td>
+						<td><img ng-src={{badge.badgeImg}} alt="badge" style="width:60px;height:60px;"></td>
+					</tr>
+			</table>
+		</div>
+		<div class="row user-lg">
+			<table class="tbl-styling" style="width: 100%;">
+				<caption>LEADERBOARDS</caption>
+				<tr>
+					<th class="bg-org">S.No</th>
+					<th class="bg-org">Name</th>
+					<th class="bg-org">Title</th>
+					<th class="bg-org">Points</th>	
+				</tr>
+				<tr ng-repeat="rank in user.rankings">
+					<td>{{$index+1}}</td>
+					<td>{{rank.name}}</td>
+					<td>{{rank.title}}</td>
+					<td>{{rank.points}}</td>
+				</tr>
+			</table>
+		</div>
+		<div class="row user-lg">
+			<table class="tbl-styling" style="width: 100%;">
+				<caption>DAILY GOALS</caption>
+				<tr>
+					<th class="bg-pink">S.No</th>
+					<th class="bg-pink">Name</th>
+					<th class="bg-pink">Description</th>
+					<th class="bg-pink">Deadline</th>	
+				</tr>
+					<tr ng-repeat="goal in user.goals">
+						<td>{{$index+1}}</td>
+						<td>{{goal.name}}</td>
+						<td>{{goal.desc}}</td>
+						<td>{{goal.deadline}}</td>
+					</tr>
+			</table>
+		</div>
+		<div class="row user-sm"></div>
+	</div>
+</div> 
