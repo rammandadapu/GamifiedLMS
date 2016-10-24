@@ -1,6 +1,7 @@
 var express = require('express')
     , http = require('http')
     , user = require('./routes/user')
+    , admin = require('./routes/admin')
     , course = require('./routes/course')
     , logger = require('./logger/logger')
     , path = require('path')
@@ -33,8 +34,10 @@ app.post('/signup', user.insertUser);
 //app.post('/signout',user.signout);
 //app.post('/signIn', user.validateUser);
 //course
+app.get('/admin', admin.displayAdminHome);
 app.get('/topicDetail:id', user.topicDetail); //change the route after getting the backend
 app.get('/courseDetails', user.courseDetails);
+app.get('/getallcourses', course.getAllCourses);
 
 app.get('/quiz', function(req,res) {
 res.render("quiz.ejs");

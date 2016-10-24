@@ -18,9 +18,9 @@ exports.createCourse = function (req, res) {
             course["name"] = req.param("name");
             course["title"] = req.param("title");
             course["description"] = req.param("description");
-            course["modules"] =[];
-            course["assessments"]=[];
-            course["module-assignment-order"] =[];
+            course["modules"] = [];
+            course["assessments"] = [];
+            course["module-assignment-order"] = [];
 
             console.log(course);
 
@@ -42,7 +42,7 @@ exports.createCourse = function (req, res) {
 };
 
 
-exports.createModule= function (req, res) {
+exports.createModule = function (req, res) {
     MongoClient.connect(mongoUrl, function (err, db) {
         if (err) {
             console.log('Unable to connect to the mongoDB server. Error:', err);
@@ -53,6 +53,9 @@ exports.createModule= function (req, res) {
 
             module["title"] = req.param("title");
             module["content"] = req.param("content");
+            module["points"] = req.param("points");
+            module["difficulty"] = req.param("difficulty");
+            module["videourl"] = req.param("videourl");
 
 
             console.log(module);
@@ -65,7 +68,7 @@ exports.createModule= function (req, res) {
                     console.log(result);
                     //Close connection
                     db.close();
-                    linkModuletoCourse(req.param('courseid'),result.ops[0]._id);
+                    linkModuletoCourse(req.param('courseid'), result.ops[0]._id);
                     res.status(201);
                     res.send("test");
 
@@ -77,7 +80,32 @@ exports.createModule= function (req, res) {
 };
 
 
-linkModuletoCourse=function(courseid,moduleid){
+exports.getAllCourses = function (req, res) {
+    MongoClient.connect(mongoUrl, function (err, db) {
+        if (err) {
+            console.log('Unable to connect to the mongoDB server. Error:', err);
+        } else {
+            console.log('Connection established to', mongoUrl);
+            var collection = db.collection('courses');
+
+            collection.find({},{"name":1,"description":1}).toArray(function (err, result) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    console.log(err);
+                    db.close();
+                    res.status(200);
+                    res.send(result);
+
+                }
+
+            });
+        }
+    });
+}
+
+
+linkModuletoCourse = function (courseid, moduleid) {
     MongoClient.connect(mongoUrl, function (err, db) {
         if (err) {
             console.log('Unable to connect to the mongoDB server. Error:', err);
@@ -86,16 +114,17 @@ linkModuletoCourse=function(courseid,moduleid){
             var collection = db.collection('courses');
 
 
-            var query  = {};
+            var query = {};
             query["_id"] = new ObjectId(courseid);
+
             var newModules={$addToSet: { modules: { $each: [ moduleid ] } } };
             collection.updateOne(query,newModules, function (err, result) {
+
                 if (err) {
                     console.log('Hello');
                     console.log(err);
                 } else {
                     console.log("inserted");
-                   // console.log(result);
                     //Close connection
                     db.close();
 
