@@ -46,7 +46,9 @@ res.render("quiz.ejs");
 //CMS
 //course
 app.post('/course', course.createCourse);
-app.post('/course/:courseid/module',course.createModule);
+app.post('/course/:id/module',course.createModule);
+app.get('/course', course.getAllCourses);
+app.get('/course/:id', course.getCourseDetails);
 
 app.post('/courseProgress',courseProgress.createCourseProgress);
 
