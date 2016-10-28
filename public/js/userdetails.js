@@ -12,12 +12,32 @@ function userController($scope){
 	user.score = 560;
 
 	user.badges =[{
-		name: "C++ Newbie",
-		points:200,
-		badgeImg:"img/coursedetails/bronze.png"
+		name: "C++ Wizard",
+		points:800,
+		badgeImg:"img/coursedetails/gold.png"
 	},{
 		name: "HTML Wizard",
 		points: 740,
+		badgeImg:"img/coursedetails/topbadge.png"
+	},{
+		name: "SCSS Lord",
+		points: 440,
+		badgeImg:"img/coursedetails/bronze.png"
+	},{
+		name: "MS Wizard",
+		points: 840,
+		badgeImg:"img/coursedetails/gold.png"
+	},{
+		name: "C Newbie",
+		points: 340,
+		badgeImg:"img/coursedetails/topbadge.png"
+	},{
+		name: "D3JS Wizard",
+		points: 740,
+		badgeImg:"img/coursedetails/gold.png"
+	},{
+		name: "ReactJS Newbie",
+		points: 400,
 		badgeImg:"img/coursedetails/topbadge.png"
 	}];
 
@@ -48,6 +68,20 @@ function userController($scope){
 		desc: "Complete the css3 chapters in Java",
 		deadline: "Apr'17"
 	}];
+
+	user.socialdetails =[{
+		link: "https://www.facebook.com/",
+		icon: "img/social-media/fb.png"
+	},
+	{
+		link: "https://www.linkedin.com/",
+		icon: "img/social-media/link.png"
+	},
+	{
+		link: "https://twitter.com/",
+		icon: "img/social-media/twitter.png"
+	}
+	];
 
 }
 angular.element(document).ready(function(){

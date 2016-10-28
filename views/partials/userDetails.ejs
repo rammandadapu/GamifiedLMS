@@ -13,7 +13,7 @@
 	
 	<div class="row user-box">
 		
-		<div class="row">
+		<div class="row user-lg">
 		<div class="col-xs-6">
 			<table class="tbl-styling" style="width: 100%;">
 				<caption>BADGES</caption>
@@ -50,6 +50,7 @@
 			</div>
 		</div>
 		<div class="row user-lg">
+		<div class="col-lg-12">
 			<table class="tbl-styling" style="width: 100%;">
 				<caption>DAILY GOALS</caption>
 				<tr>
@@ -65,7 +66,10 @@
 						<td>{{goal.deadline}}</td>
 					</tr>
 			</table>
+			</div>
 		</div>
-		<div class="row user-sm"></div>
+		<div class="row user-sm">
+			<div ng-repeat="sm in user.socialdetails" class="col-lg-4"><a target="_blank" rel="noopener" ng-href={{sm.link}}><img class="social-icon" ng-src={{sm.icon}} alt="badge"></a></div>
+		</div>
 	</div>
 </div> 
