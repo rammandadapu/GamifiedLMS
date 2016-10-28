@@ -40,6 +40,11 @@ function courseController($scope){
 			window.location = "/topicDetail:id";
 		}
 	};
+	course.redirectQuiz = function(index){
+		if(course.courseDetails.topics[index].topiclock===false){
+			window.location = "/quiz";
+		}
+	};
 	course.topicLock = function(index){
 		if(course.courseDetails.topics[index].topiclock===true){
 			return "fa-lock";

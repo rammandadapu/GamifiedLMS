@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<div id="coursemodule" class="col-xs-7" ng-controller="courseController as cctrl">
+<div id="coursemodule" class="col-xs-4" ng-controller="courseController as cctrl">
 	<div class="course-heading">
 			{{cctrl.courseDetails.courseName}}
 	</div>
@@ -17,7 +17,7 @@
 							</div>
 					</div>
 					<div class="line elem-center"></div>
-					<button class="bg-grn btn-basics elem-center btn-rnd" ng-click="cctrl.redirect($index)" ng-class="cctrl.getTopicPtr($index)">LEVEL {{$index + 1}} CHALLENGE 
+					<button class="bg-grn btn-basics elem-center btn-rnd" ng-click="cctrl.redirectQuiz($index)" ng-class="cctrl.getTopicPtr($index)">LEVEL {{$index + 1}} CHALLENGE 
 						<i class="fa fa-lg" ng-class="cctrl.topicLock($index)" aria-hidden="true"></i>
 					</button>
 			</div>

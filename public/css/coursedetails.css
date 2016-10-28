@@ -1,5 +1,6 @@
 .search-box {
 	float: right;
+	margin: 0;
 }
 .course-heading {
 	text-align: center;
@@ -63,7 +64,7 @@
 	overflow:auto;
 }
 .user-box {
-	width: 415px;
+	//width: 415px;
 	height: 480px; 
 	background: #ccffcc; 
 	box-shadow: 10px 10px 5px #888888; 
@@ -80,7 +81,7 @@
 	overflow:auto;
 }
 .user-lg {
-	width: 390px;
+	//width: 390px;
 	height: 120px; 
 	background: #ffffff;
 	display: block;
