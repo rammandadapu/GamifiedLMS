@@ -28,7 +28,7 @@
 
 
     <script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
-
+    <script src="js/coursesdisplay.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -38,7 +38,7 @@
 
 </head>
 
-<body id="page-top" class="index" ng-app="" ng-controller="personController">
+<body id="page-top" class="index">
 
     <!-- Navigation -->
     <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top header-nav">
@@ -77,7 +77,7 @@
     </nav>
 
     <!-- Header -->
-    <section id="register">
+    <section id="register" ng-app="" ng-controller="personController">
         <div class="container">
             <div class="intro-text">
                 <div class="container">
@@ -122,74 +122,8 @@
 
     <!-- Portfolio Grid Section -->
     <section id="portfolio" class="bg-light-gray">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">We have many new courses like:</h2>
-                    <h3 class="section-subheading text-muted">Front end development, Back end development</h3>
-                </div>
-            </div>
-    <div class="row">
-      <div class="col-xs-4">
-        <button class="bg-ylw btn-basics btn-w">COURSES</button>
-      </div>
-      <div class="col-xs-4">
-      <button class="bg-org btn-basics btn-w" onclick="window.location = '/coursedetails'">PERSONAL BADGES</button>
-      </div>
-      <div class="col-xs-4 search-box">
-        <input type="search" name="coursesearch" class="input-bsc" placeholder="search">
-        <button type="button btn-w">Go!</button>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-4">
-        <button class="bg-grn btn-basics btn-w-content">YOUR COURSES</button>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-11 content-layout">
-        <div classs="row">
-          <div class="col-xs-3 course-ov">
-            <img class="img-course" src="img/java-large-logo.png">
-            <button class="btn-basics btn-view course-thumbnail-button" onclick="window.location = '/coursedetails'">VIEW</button>            
-          </div>
-          <div class="col-xs-3 course-ov">
-            <img class="img-course" src="img/ruby-logo.png">
-            <button class="btn-basics btn-view course-thumbnail-button">VIEW</button>
-          </div>
-          <div class="col-xs-3 course-ov">
-            <img class="img-course" src="img/python-poster.jpg">
-            <button class="btn-basics btn-view course-thumbnail-button">VIEW</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-4">
-        <button class="bg-blue btn-basics btn-w-content">TRENDING COURSES</button>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-11 content-layout">
-        <div classs="row">
-          <div class="col-xs-3 course-ov">
-            <img class="img-course" src="img/algebra.png">
-            <button class="btn-basics btn-view course-thumbnail-button">ENROLL</button>
-          </div>
-          <div class="col-xs-3 course-ov">
-            <img class="img-course" src="img/organic.png">
-            <button class="btn-basics btn-view course-thumbnail-button">ENROLL</button>
-          </div>
-          <div class="col-xs-3 course-ov">
-            <img class="img-course" src="img/html.png">
-            <button class="btn-basics btn-view course-thumbnail-button">ENROLL</button>
-          </div>
-        </div>
-      </div>
-    </div>
-        </div>
+        <%include partials/coursesDisplay.ejs %>
     </section>
-
     <!-- About Section -->
     <section id="about">
         <div class="container">

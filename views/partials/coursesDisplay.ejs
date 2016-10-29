@@ -1,0 +1,42 @@
+<div id="courselist" class="container" ng-controller="courseListController as clc">
+  <div class="row">
+    <div class="col-lg-12 text-center">
+        <h2 class="section-heading">We have many new courses like:</h2>
+        <h3 class="section-subheading text-muted">Front end development, Back end development</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-4">
+      <button class="bg-ylw btn-basics btn-w hvr-fade">COURSES</button>
+    </div>
+    <div class="col-xs-4">
+    <button class="bg-org btn-basics btn-w hvr-fade" onclick="window.location = '/coursedetails'">PERSONAL BADGES</button>
+    </div>
+    <div class="col-xs-4 search-box">
+      <input type="search" name="coursesearch" class="input-bsc" placeholder="search">
+      <button type="button btn-w hvr-fade">Go!</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-4">
+      <button class="bg-grn btn-basics btn-w-content hvr-fade">YOUR COURSES</button>
+    </div>
+  </div>
+  <div class="row">
+    <div ng-repeat="list in clc.encourses" class="col-xs-4 course-ov">
+      <img class="img-course" ng-src={{list.img}}>
+      <button class="btn-basics btn-view course-thumbnail-button hvr-grow-shadow" ng-click="clc.goToCourse(list.link)">View Course</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-4">
+      <button class="bg-blue btn-basics btn-w-content hvr-fade">TRENDING COURSES</button>
+    </div>
+  </div>
+  <div class="row">
+    <div ng-repeat="list in clc.tcourses" class="col-xs-4 course-ov">
+      <img class="img-course" src={{list.img}}>
+      <button class="btn-basics btn-view course-thumbnail-button hvr-grow-shadow">Enroll Course</button>
+    </div>
+  </div>
+</div>
