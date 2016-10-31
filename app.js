@@ -37,7 +37,7 @@ app.post('/signup', user.insertUser);
 app.get('/admin', admin.displayAdminHome);
 app.get('/topicDetail:id', user.topicDetail); //change the route after getting the backend
 app.get('/courseDetails', user.courseDetails);
-app.get('/getallcourses', course.getAllCourses);
+app.get('/getallcourses', course.getCoursesDetails);
 
 app.get('/quiz', function(req,res) {
 res.render("quiz.ejs");
@@ -46,9 +46,14 @@ res.render("quiz.ejs");
 //CMS
 //course
 app.post('/course', course.createCourse);
-app.post('/course/:id/module',course.createModule);
-app.get('/course', course.getAllCourses);
-app.get('/course/:id', course.getCourseDetails);
+app.post('/course/:courseid/module',course.createModule);
+app.post('/module/:moduleid/assessment',course.createAssessment);
+app.get('/course/:id?', course.getCoursesDetails);
+app.get('/module/:moduleid', course.getModuleDetails);
+app.get('/course/:courseid/module', course.getAllModulesofCourse);
+app.get('/assessment/:assessmentid', course.getAssessment);
+
+
 
 app.post('/courseProgress',courseProgress.createCourseProgress);
 
