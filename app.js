@@ -52,6 +52,7 @@ app.get('/course/:id?', course.getCoursesDetails);
 app.get('/module/:moduleid', course.getModuleDetails);
 app.get('/course/:courseid/module', course.getAllModulesofCourse);
 app.get('/assessment/:assessmentid', course.getAssessment);
+app.get('/search/:q', course.searchCourse);
 
 
 

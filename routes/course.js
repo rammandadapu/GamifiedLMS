@@ -107,7 +107,7 @@ getDetails = function (dbcollection, query, columnFilter, callme) {
             collection.find(query, columnFilter).toArray(function (err, result) {
                 if (err) {
                     console.log(err);
-                    callme(err,null);
+                    callme(err, null);
                 } else {
                     db.close();
                     callme(null, result);
@@ -118,8 +118,30 @@ getDetails = function (dbcollection, query, columnFilter, callme) {
     });
 }
 
+callAggregate = function (dbcollection, query, callme) {
+    MongoClient.connect(mongoUrl, function (err, db) {
+        if (err) {
+            console.log('Unable to connect to the mongoDB server. Error:', err);
+        } else {
+            console.log('Connection established to', mongoUrl);
+            console.log(dbcollection);
+            var collection = db.collection(dbcollection);
 
-linkDocuments = function (dbcollection,parentid, childid, parentFieldName) {
+            collection.aggregate(query, function (err, result) {
+                if (err) {
+                    console.log(err);
+                    callme(err, null);
+                } else {
+                    db.close();
+                    callme(null, result);
+                }
+
+            });
+        }
+    });
+}
+
+linkDocuments = function (dbcollection, parentid, childid, parentFieldName) {
     connectToDB(function (err, db) {
         if (err) {
             console.log(err);
@@ -129,8 +151,8 @@ linkDocuments = function (dbcollection,parentid, childid, parentFieldName) {
             var collection = db.collection(dbcollection);
             var query = {};
             query["_id"] = new ObjectId(parentid);
-            var addToSet={};
-            addToSet[parentFieldName]={$each: [childid]};
+            var addToSet = {};
+            addToSet[parentFieldName] = {$each: [childid]};
             var newModules = {$addToSet: addToSet};
             collection.updateOne(query, newModules, function (err, result) {
 
@@ -185,7 +207,7 @@ exports.createModule = function (req, res) {
 
     promise.then(function (result) {
         //Linking course to module
-        linkDocuments('courses',req.param('courseid'),result.ops[0]._id,'modules');
+        linkDocuments('courses', req.param('courseid'), result.ops[0]._id, 'modules');
         sendResponse(201, result, res);
     }).catch(function (err) {
         sendResponse(404, "Failed", res);
@@ -202,7 +224,7 @@ exports.createAssessment = function (req, res) {
 
     promise.then(function (result) {
         //Linking module to assessments
-        linkDocuments('modules',req.param('moduleid'),result.ops[0]._id,'assessments');
+        linkDocuments('modules', req.param('moduleid'), result.ops[0]._id, 'assessments');
         sendResponse(201, result, res);
     }).catch(function (err) {
         sendResponse(404, "Failed", res);
@@ -248,6 +270,14 @@ exports.getAssessment = function (req, res) {
         columnFilter = {};
     }
     handleResponse('assessments', query, columnFilter, res);
+}
+
+
+
+exports.searchCourse = function (req, res) {
+    var keyword = req.param("q");
+    var query = {$match: {$or: [{'name': keyword}, {'title': keyword}, {'description': {$regex: '.*' + keyword + '.*'}}]}}; 
+    handleMethodCall(callAggregate, ['courses', query], res);
 }
 
 exports.getAllModulesofCourse = function (req, res) {
