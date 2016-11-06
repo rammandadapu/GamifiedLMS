@@ -10,6 +10,34 @@ exports.displayLogin = function(req, res){
 	  res.render('index1', { title: 'Gamified LMS' });
 	};
 	
+exports.signin=function(req,res) {
+	var email=req.param("email"),pswd=req.param("password");	
+
+	if(email!==undefined && pswd!==undefined && email!=="" && pswd!=="") {
+		MongoClient.connect(url, function (err, db) {
+	        if (err) {
+	            console.log('Unable to connect to the mongoDB server. Error:', err);
+	        } else {
+	            console.log('Connection established to', url);
+	            var collection = db.collection('user');	            
+	            collection.findOne({"email":email,"password":pswd},function (err, result) {
+	                if (err) {
+	                    console.log(err);
+	                    res.send({'status':'error'});
+	                } else {
+	                    console.log(result);
+	                    db.close();
+	                    res.status(200);
+	                    res.send({'status':'success'});
+
+	                }
+
+	            });
+	        }
+	    });
+	}
+};
+
 exports.insertUser=function(req,res){	
 	
 	var fname=req.param("fname"),lname=req.param("lname");
@@ -24,7 +52,7 @@ exports.insertUser=function(req,res){
 			  } else {		 
 			    //console.log('Connection established to', url);
 				  logger.debug('Connection established to', url);
-			    var collection = db.collection('savedSearches');	
+			    var collection = db.collection('user');	
 			    
 				var query = {};
 				
@@ -59,7 +87,8 @@ exports.insertUser=function(req,res){
 };
 
 exports.topicDetail = function(req, res){
-	  res.render('topicDetail', { title: 'Gamified LMS' });
+		console.log("topic detail called----");	  
+	  res.render('topicDetail', { title: 'Gamified LMS', moduleId: req.param("id"), coursename: req.param("coursename") });
 };
 
 exports.courseDetails = function(req, res){
