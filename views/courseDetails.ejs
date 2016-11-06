@@ -41,7 +41,7 @@
 
 </head>
 
-<body id="page-top" style="overflow:hidden">
+<body id="page-top" style="overflow:hidden" ng-app="" ng-controller="courseDetailsController>
 
 						<!-- Navigation -->
 				<nav id="mainNav" class="navbar navbar-default navbar-custom navbar-static-top header-nav" role="navigation" style="margin-bottom: 0">
@@ -273,5 +273,11 @@
 				<%include partials/userDetails.ejs %>	          
 			</div>
 		</div>
+
+		<script type="text/javascript">
+			function courseDetailsController($scope, $http, $location) {
+				
+			}
+		</script>
 </body>
 </html>
