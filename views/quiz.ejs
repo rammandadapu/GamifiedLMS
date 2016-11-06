@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myapp" ng-controller="quizController">
 
 <head>
 
@@ -32,9 +32,6 @@
     <script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script>
   $( function() {
@@ -53,7 +50,7 @@
 
 </head>
 
-<body id="page-top" ng-app="" ng-controller="topicController">
+<body id="page-top">
 
             <!-- Navigation -->
         <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-static-top header-nav" role="navigation" style="margin-bottom: 0">
@@ -279,28 +276,7 @@
             <!-- /.navbar-top-links -->
         </nav>
 
-    <div id="page-wrapper">
-        <div class="row">
-            <div class="col-lg-8">
-                <div class="panel panel-default">
-                    <div class="panel-heading bg-ylw">
-                        Course: Java
-                    </div>
-
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-lg-5">
-                                
-                                
-             
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>            
-        </div>
-
+    <div id="page-wrapper">        
         <div class="row">    
             <div class="col-lg-8">                        
                 <div class="panel panel-default">
@@ -308,78 +284,67 @@
                         QUIZ - Earn Badges!
                     </div>
                 <div class="panel-body">
-                    <div class="test-question-block">
-                        <div class="row">
-                            <div class="multiple-choice-question">
-                                Question 1: Drag the following items into the right categories.
+                    <div ng-repeat="question in data">
+                        <div ng-if="question.questiontype=='categories'" class="test-question-block">
+                            <div class="row">                            
+                                <div class="multiple-choice-question">
+                                    {{$index+1}}) Drag the following items into the right categories.
+                                </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <ul class="connectedSortable source-bucket">
-                              <li type="button" class="btn btn-primary">int</li>
-                              <li type="button" class="btn btn-primary">area</li>
-                              <li type="button" class="btn btn-primary">length</li>
-                              <li type="button" class="btn btn-primary">class</li>
-                              <li type="button" class="btn btn-primary">help</li>
-                              <li type="button" class="btn btn-primary">float</li>
-                              <li type="button" class="btn btn-primary">Height</li>
-                              <li type="button" class="btn btn-primary">desk</li>
-                              <li type="button" class="btn btn-primary">else</li>
-                            </ul>                             
-                        </div>
-                            
+                            <div class="row">
+                                <ul class="connectedSortable source-bucket">
+                                    <li type="button" class="btn btn-primary" ng-repeat="item in question.items">{{item}}</li>    
+                                </ul>                                                     
+                            </div>
+                                
 
-                        <div class="row">                            
-                            <ul class="connectedSortable result-bucket">
-                              
-                            </ul>
-
-                            <ul class="connectedSortable result-bucket">
-                              
-                            </ul>
-
-                            <ul class="connectedSortable result-bucket">
-                              
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="test-question-block">
-                        <div class="row">
-                            <div class="multiple-choice-question">
-                                Question 1: Drag the following items into the right categories.
+                            <div class="row">                            
+                                <ul class="connectedSortable result-bucket" ng-repeat="category in question.categories">
+                                  {{category}}
+                                </ul>                            
                             </div>
                         </div>
-                    </div>
-                    <div class="test-question-block">
-                        <div class="row">
-                            <div class="multiple-choice-question">
-                                Question 2: What is the minimum value of a byte?
+                        
+                        <div ng-if="question.questiontype == 'multiplechoice'" class="test-question-block">
+                            <div class="row">
+                                <div class="multiple-choice-question">
+                                    {{$index+1}})&nbsp;{{ question.question }}
+                                </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <button type="button" class="btn btn-default multiple-choice-option">
-                                    A) -127
-                                </button>
-                            </div>
-                            <div class="col-lg-6">
-                                <button type="button" class="btn btn-default multiple-choice-option">
-                                    B) 0
-                                </button>
+                            <div class="btn-group" data-toggle="buttons">
+                                <label class="btn btn-default multiple-choice-option" style="border-radius:5px;">
+                                    <input type="radio" name="options" id="optionA">A) {{question.choices[0]}}
+                                </label> 
+                                <label class="btn btn-default multiple-choice-option" style="border-radius:5px;">
+                                    <input type="radio" name="options" id="optionB">B) {{question.choices[1]}}
+                                </label>    
+                                <label class="btn btn-default multiple-choice-option" style="border-radius:5px;">
+                                    <input type="radio" name="options" id="optionC">C) {{question.choices[2]}}
+                                </label> 
+                                <label class="btn btn-default multiple-choice-option" style="border-radius:5px;">
+                                    <input type="radio" name="options" id="optionD">D) {{question.choices[3]}}
+                                </label> 
                             </div>                            
                         </div>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <button type="button" class="btn btn-default multiple-choice-option">
-                                    C) 127
-                                </button>
+
+                        <div ng-if="question.questiontype == 'trueorfalse'" class="test-question-block">
+                            <div class="row">
+                                <div class="multiple-choice-question">
+                                    {{$index+1}})&nbsp;{{ question.question }}
+                                </div>
                             </div>
-                            <div class="col-lg-6">
-                                <button type="button" class="btn btn-default multiple-choice-option">
-                                    D) 128
-                                </button>
-                            </div>                            
+                            <div class="row">
+                                <div class="btn-group" data-toggle="buttons">
+                                    <label class="btn btn-default multiple-choice-option" style="border-radius:5px;">
+                                        <input type="radio" name="trueorfalseoptions" id="trueoption">True
+                                    </label> 
+                                    <label class="btn btn-default multiple-choice-option" style="border-radius:5px;">
+                                        <input type="radio" name="trueorfalseoptions" id="falseoption">False
+                                    </label>                                    
+                                </div>                            
+                            </div>
                         </div>
+                        
                     </div>
                     <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
                     <!-- Modal -->
@@ -419,5 +384,30 @@
             </div>
         </div>
     </div>
+
+    <script type="text/javascript">
+        
+        var app = angular.module('myapp', []);
+        app.controller('quizController', function($http, $scope, $location) {                 
+         $scope.quizId = <%- JSON.stringify(quizId) %>;
+         $scope.coursename = <%- JSON.stringify(coursename) %>;           
+
+         /*$http({
+                    method: 'GET',
+                    url: '/quiz/'+$scope.quizId             
+                    
+                 }).success(function(response){                                 
+                      $scope.data = response;
+                }).error(function(error){
+                    alert("error");
+                }); 
+        });*/
+        $scope.data = [{"questiontype":"categories","categories":["keywords","variables","datatypes"],"items":["int","area","length","class","help","float","else"],"answer":[{"category":"keywords","items":["class","else","length"]},{"category":"variables","items":["help","desk","height","area"]},{"category":"datatypes","items":["int","float"]}]},
+{"questiontype":"multiplechoice","question":"What is the minimum value of a byte?","choices":["-127","0","127","128"],"answer":"-127"},
+{"questiontype":"trueorfalse","question":"There is no automatic garbage collection in Java.","answer":"false"}];
+        
+});
+        
+    </script> 
 </body>
 </html>

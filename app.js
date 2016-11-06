@@ -42,7 +42,7 @@ app.get('/courseDetails', user.courseDetails);
 app.get('/getallcourses', course.getCoursesDetails);
 
 app.get('/quiz', function(req,res) {
-res.render("quiz.ejs");
+res.render("quiz.ejs",{"quizId":"83683658765","coursename":"Java"});
 });
 
 //CMS
