@@ -36,6 +36,7 @@ app.post('/signup', user.insertUser);
 app.post('/signin', user.signin);
 //course
 app.get('/admin', admin.displayAdminHome);
+app.get('/courseCreation', admin.displayCourseCreation);
 app.get('/topicDetail/:coursename/:id', user.topicDetail); //change the route after getting the backend
 app.get('/courseDetails', user.courseDetails);
 app.get('/getallcourses', course.getCoursesDetails);
