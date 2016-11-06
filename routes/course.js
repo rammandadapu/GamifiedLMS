@@ -28,7 +28,7 @@ connectToDB = function (callme) {
 
 
 handleMethodCall = function (methodname, params, res) {
-    var promise = c2p(methodname)(params);
+    var promise = c2p(methodname)(...params);
     //... is for variable number of arguments
     promise.then(function (result) {
         sendResponse(201, result, res);
