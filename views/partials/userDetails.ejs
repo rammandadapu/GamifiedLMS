@@ -6,8 +6,10 @@
 		<!--</div>
 	<div class="row" style="margin-bottom: 9px;">-->
 		<div class="col-xs-6 search-box">
-			<input type="search" name="coursesearch" class="input-bsc" placeholder="search">
-			<button type="button" >Go!</button>
+		<form action="/search" method="GET">
+			<input type="search" name="q" class="input-bsc" placeholder="search">
+			<button type="submit" >Go!</button>
+		</form>
 		</div>
 	</div>
 	
@@ -49,7 +51,7 @@
 			</table>
 			</div>
 		</div>
-		<div class="row user-lg">
+		<div class="row user-sm">
 		<div class="col-lg-12">
 			<table class="tbl-styling" style="width: 100%;">
 				<caption>DAILY GOALS</caption>
@@ -68,8 +70,8 @@
 			</table>
 			</div>
 		</div>
-		<div class="row user-sm">
+		<!-- <div class="row user-sm">
 			<div ng-repeat="sm in user.socialdetails" class="col-lg-4"><a target="_blank" rel="noopener" ng-href={{sm.link}}><img class="social-icon" ng-src={{sm.icon}} alt="badge"></a></div>
-		</div>
+		</div> -->
 	</div>
 </div> 

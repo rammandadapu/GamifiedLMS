@@ -1,3 +1,4 @@
+<!Doctype HTML>
 <div id="courselist" class="container" ng-controller="courseListController as clc">
   <div class="row">
     <div class="col-lg-12 text-center">
@@ -5,6 +6,7 @@
         <h3 class="section-subheading text-muted">Front end development, Back end development</h3>
     </div>
   </div>
+  {{clc.resdata}}
   <div class="row">
     <div class="col-xs-4">
       <button class="bg-ylw btn-basics btn-w hvr-fade">COURSES</button>
@@ -13,8 +15,8 @@
     <button class="bg-org btn-basics btn-w hvr-fade" onclick="window.location = '/coursedetails'">PERSONAL BADGES</button>
     </div>
     <div class="col-xs-4 search-box">
-      <input type="search" name="coursesearch" class="input-bsc" placeholder="search">
-      <button type="button btn-w hvr-fade">Go!</button>
+      <input type="search" name="q" class="input-bsc" placeholder="search">
+      <button type="submit" >Go!</button>
     </div>
   </div>
   <div class="row">

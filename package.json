@@ -3,16 +3,20 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
   "dependencies": {
     "express": "3.2.6",
     "ejs": "*",
-    "mongodb":"*",
-    "body-parser":"*",
-    "jsforce":"*",
-    "url":"*",
+    "mongodb": "*",
+    "body-parser": "*",
+    "jsforce": "*",
+    "url": "*",
     "winston": "^2.2.0",
-    "callback2promise":"*"
+    "callback2promise": "*"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
   }
 }

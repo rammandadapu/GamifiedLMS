@@ -232,6 +232,19 @@ exports.createAssessment = function (req, res) {
 
 }
 
+// exports.getCoursesDetails = function (req, res) {
+//     var query = {};
+//     var columnFilter = {};
+//     var courseid = req.param("id");
+//     if (null != courseid && undefined != courseid) {
+//         query["_id"] = new ObjectId(courseid);
+//     } else {
+//         columnFilter = {"name": 1, "description": 1}
+//     }
+//     handleResponse('courses', query, columnFilter, res);
+
+// }
+
 exports.getCoursesDetails = function (req, res) {
     var query = {};
     var columnFilter = {};
@@ -244,7 +257,6 @@ exports.getCoursesDetails = function (req, res) {
     handleResponse('courses', query, columnFilter, res);
 
 }
-
 
 exports.getModuleDetails = function (req, res) {
 
