@@ -28,9 +28,7 @@ connectToDB = function (callme) {
 
 
 handleMethodCall = function (methodname, params, res) {
-    var promise = c2p(methodname)(...params
-    )
-    ;
+    var promise = c2p(methodname).apply( this, params );//(...params);
     //... is for variable number of arguments
     promise.then(function (result) {
         sendResponse(201, result, res);
@@ -184,6 +182,7 @@ exports.createCourse = function (req, res) {
     course["name"] = req.param("name");
     course["title"] = req.param("title");
     course["description"] = req.param("description");
+    course["imgurl"] = req.param("imgurl");
     course["modules"] = [];
     handleMethodCall(insertDetails, ['courses', course], res);
 
@@ -285,12 +284,10 @@ exports.getAssessment = function (req, res) {
 }
 
 
-
 exports.searchCourse = function (req, res) {
     var keyword = req.param("q");
-    var query = [{$match: {$or: [{'name': keyword}, {'title': keyword}, {'description': {$regex: '.*' + keyword + '.*'}}]}},
-        {$project: {'title': 1, 'name': 1, 'description':1}
-    }];
+    var query = [{$match: {$or: [{'name': {$regex: '.*' + keyword + '.*',"$options": "i"}}, {'title': {$regex: '.*' + keyword + '.*',"$options": "i"}}, {'description': {$regex: '.*' + keyword + '.*',"$options": "i"}}]}},
+        {$project: {'title': 1, 'name': 1, 'description':1}}];
     handleMethodCall(callAggregate, ['courses', query], res);
 }
 

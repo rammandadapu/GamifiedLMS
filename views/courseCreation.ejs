@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Gamified LMS - Learn while you have fun</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- Theme CSS -->
+    <link href="css/application.css" rel="stylesheet">
+    <link href="css/agency.min.css" rel="stylesheet">
+    <link href="css/myagency.css" rel="stylesheet">
+
+
+    <script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body ng-app="myApp" ng-controller="courseController">
+
+<div id="wrapper">
+    <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top header-nav">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">Gamified Learning</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-center">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#adminconsole">Home</a>
+                    </li>
+
+                    <li>
+                        <a class="page-scroll" href="#about">About Us</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#team">Contact Us</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#">Logout</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+<br>
+    <br>
+    <br>
+    <br>
+    <div class="row text-center">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <h1>
+                    Welcome Admin !
+                </h1>
+                <div class="alert alert-danger" ng-show='errorPanel'>
+                    <span class="glyphicon glyphicon-exclamation-sign"></span>
+                    Error: {{errorMsg}}
+                </div>
+                <!-- Course creation -->
+                <div class="panel-body" ng-show ="courseCreation">
+                    <h3>
+                        Course Creation
+                    </h3>
+
+                    <div class="row">
+                            <form role="form">
+
+                                <div class="col-lg-8 col-lg-offset-4 form-group text-center" >
+                                    <label for="Server" class = "col-sm-2 control-label">Course Name :</label>
+                                    <div class = "col-sm-6">
+                                        <input type="text" class="form-control" name="courseName" ng-model='name' placeholder="Enter Course Name"  >
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <label class = "col-sm-2 control-label">Title :</label>
+                                    <div class = "col-sm-6">
+                                        <input type="text" class="form-control" name="title" ng-model='title' placeholder="Enter Title">
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <label class = "col-sm-2 control-label">Description :</label>
+                                    <div class = "col-sm-6">
+                                        <textarea class="form-control" name="description" ng-model='description' placeholder="Enter Description">
+                                            </textarea>
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <label class = "col-sm-2 control-label">Image URL :</label>
+                                    <div class = "col-sm-6">
+                                        <input type="text" class="form-control" name="image" ng-model='imgurl' placeholder="Enter Image URL">
+                                    </div>
+                                </div>
+                                <br><br>
+                                <button type="submit" class="btn btn-info" ng-click="createCourse()">Create Course</button>
+                                <button type="reset" class="btn btn-warning" ng-click="resetChanges()">Go Back</button>
+                            </form>
+                        </div>
+
+                </div> <!-- END OF course creation -->
+
+                <div class="panel-body" ng-show="courseDisplay"> <!-- Course Display -->
+                        <h3>Course Details </h3>
+                    <div class="row text-center">
+                            <div class ="col-lg-4 col-lg-offset-4 form-group">
+                                <label class = "col-sm-4 control-label">Course Name :</label>
+                                <div class = "col-sm-6">
+                                    <p>{{courseName}}</p>
+                                </div>
+
+                                <label  class = "col-sm-4 control-label">Title :</label>
+                                <div class = "col-sm-6">
+                                    <p>{{courseTitle}}</p>
+                                </div>
+
+                                <label   class = "col-sm-4 control-label">Description :</label>
+                                <div class = "col-sm-6">
+                                    <p>{{courseDesc}}</p>
+                                </div>
+
+                                <label  class = "col-sm-4 control-label">Image URL:</label>
+                                <div class = "col-sm-6">
+                                   <p>{{courseURL}}</p>
+                                </div>
+                                <button type="button" class="btn btn-success" ng-click="addModule()">Add Module</button>
+                                <button type="reset" class="btn btn-warning" ng-click="resetChanges()">Go Back</button>
+                            </div>
+                    </div>
+                </div> <!-- END of Course Display -->
+
+                <div class="panel-body" ng-show="moduleCreation"> <!-- Module creation -->
+                    <h4>Module Creation</h4>
+                    <div class="col-lg-8 col-lg-offset-4 form-group text-center">
+                        <label  class="col-sm-2 control-label">
+                            Module Name :
+                        </label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="title" ng-model='moduleTitle' placeholder="Enter module name" required>
+                        </div>
+                        <br>
+                        <br>
+                        <label class = "col-sm-2 control-label">Content :</label>
+                        <div class = "col-sm-6">
+                            <input class="form-control" name="description" ng-model='content' placeholder="Enter Description">
+                        </div>
+                        <br>
+                        <br>
+                        <label  class="col-sm-2 control-label">
+                            Points :
+                        </label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="title" ng-model='points' placeholder="Enter points" required>
+                        </div>
+                        <br>
+                        <br>
+                        <label  class="col-sm-2 control-label">
+                            Difficulty :
+                        </label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="title" ng-model='difficulty' placeholder="Enter Difficulty" required>
+                        </div>
+                        <br>
+                        <br>
+                        <label  class="col-sm-2 control-label">
+                            Content Video URL :
+                        </label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="videoURL" ng-model='videourl' placeholder="Enter Video URL" required>
+                        </div>
+                        <br>
+                        <br>
+                    </div>
+                    <button type="submit" class="btn btn-info" ng-click="createModule()">Create Module</button>
+                    <button type="reset" class="btn btn-warning" ng-click="cancelModule()">Cancel</button>
+                </div> <!-- END of module creation -->
+
+                <div class="panel-body" ng-show="moduleDisplay"> <!-- Module Display -->
+                    <h5>Module Details </h5>
+                    <div class="row text-center">
+                        <div class ="col-lg-4 col-lg-offset-4 form-group">
+                            <label class = "col-sm-4 control-label">Module Name :</label>
+                            <div class = "col-sm-6">
+                                <p>{{moduleDisplayName}}</p>
+                            </div>
+
+                            <label  class = "col-sm-4 control-label">Content :</label>
+                            <div class = "col-sm-6">
+                                <p>{{moduleDisplayContent}}</p>
+                            </div>
+
+                            <label   class = "col-sm-4 control-label">Points :</label>
+                            <div class = "col-sm-6">
+                                <p>{{moduleDisplayPoints}}</p>
+                            </div>
+                            <label   class = "col-sm-4 control-label">Difficulty :</label>
+                            <div class = "col-sm-6">
+                                <p>{{moduleDisplayDifficulty}}</p>
+                            </div>
+                            <label  class = "col-sm-4 control-label">Video URL:</label>
+                            <div class = "col-sm-6">
+                                <p>{{moduleVideoURL}}</p>
+                            </div>
+                            <button type="button" class="btn btn-success" ng-click="addAssessment()">Add Assessment</button>
+                            <button type="reset" class="btn btn-warning" ng-click="cancelAssessment()">Go Back</button>
+                        </div>
+                    </div>
+                </div> <!-- END of Module Display -->
+
+            </div>
+        </div>
+    </div>
+
+</div> <!--END OF CONTROLLER -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <span class="copyright">Copyright &copy; Your Website 2016</span>
+            </div>
+            <div class="col-md-4">
+                <ul class="list-inline social-buttons">
+                    <li><a href="#"><i class="fa fa-twitter"></i></a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-facebook"></i></a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <ul class="list-inline quicklinks">
+                    <li><a href="#">Privacy Policy</a>
+                    </li>
+                    <li><a href="#">Terms of Use</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+<script>
+    angular.module('myApp',[]).controller('courseController',function($scope, $http, $location) {
+        $scope.errorPanel = false;
+        $scope.courseCreation = true;
+        var currentCourse = null;
+        var currentModule = null;
+
+        $scope.createCourse = function() {
+
+            if($scope.name === null || $scope.name === undefined || $scope.name === ''|| $scope.title === null || $scope.title === undefined || $scope.title === ''){
+                $scope.errorMsg = "Please enter valid course details";
+                $scope.errorPanel = true;
+            }
+            else {
+                $scope.errorPanel = false;
+                $http({
+                    method: 'POST',
+                    url: '/course',
+                    data: {
+                        "name": $scope.name, "title": $scope.title,
+                        "description": $scope.description, "imgurl": $scope.imgurl
+                    }
+
+                }).success(function (response) {
+                    if (response != "Failed") {
+                        console.log("Created Course result::::",JSON.stringify(response));
+                        var result = response.ops[0];
+                        $scope.courseName = result.name;
+                        currentCourse = result._id;
+                        $scope.courseTitle = result.title;
+                        $scope.courseDesc = result.description;
+                        $scope.courseURL = result.imgurl;
+
+                        $scope.courseCreation = false;
+                        $scope.courseDisplay = true;
+                        $scope.errorPanel = false;
+                    }
+                    else {
+                        $scope.errorMsg = "Problem to create Course. Please try again";
+                        $scope.errorPanel = true;
+                    }
+                }).error(function (error) {
+                    alert("enter main error");
+                    $scope.errorMsg = "Problem to create Course. Please try again";
+                    $scope.errorPanel = true;
+                });
+            }
+        };
+        $scope.addModule = function() {
+            if(currentCourse === null || currentCourse === undefined || currentCourse === ''){
+                $scope.errorMsg = "Please enter valid course details";
+                $scope.errorPanel = true;
+            } else {
+                $scope.moduleCreation = true;
+                $scope.errorPanel = false;
+                $scope.moduleDisplay = false;
+            }
+        }
+
+        $scope.createModule = function() {
+            if(currentCourse === null || currentCourse === undefined || currentCourse === ''
+            || $scope.moduleTitle === null || $scope.moduleTitle === '' || $scope.moduleTitle === undefined){
+                $scope.errorMsg = "Please enter valid module details";
+                $scope.errorPanel = true;
+            }
+            else {
+                $scope.errorPanel = false;
+                $http({
+                    method: 'POST',
+                    url: '/course/'+currentCourse+'/module',
+                    data: {
+                        "title": $scope.moduleTitle, "content": $scope.content, "points": $scope.points, "difficulty": $scope.difficulty,
+                         "videourl": $scope.videourl
+                    }
+
+                }).success(function (response) {
+                    if (response != "Failed") {
+                        console.log("Current Created Module result::::",JSON.stringify(response));
+
+                        var moduleOps = response.ops[0];
+                        $scope.moduleDisplayName = moduleOps.title;
+                        $scope.moduleDisplayContent = moduleOps.content;
+                        $scope.moduleDisplayPoints = moduleOps.points;
+                        $scope.moduleDisplayDifficulty = moduleOps.difficulty;
+                        $scope.moduleVideoURL = moduleOps.videourl;
+
+                        $scope.errorPanel = false;
+                        $scope.moduleCreation = false;
+                        $scope.moduleDisplay = true;
+
+                    }
+                    else {
+                        $scope.errorMsg = "Problem to create Module. Please try again";
+                        $scope.errorPanel = true;
+                    }
+                }).error(function (error) {
+                    alert("enter main error");
+                    $scope.errorMsg = "Problem to create Module. Please try again";
+                    $scope.errorPanel = true;
+                });
+            }
+
+        }
+
+        $scope.resetChanges = function() {
+            window.location = '/admin';
+            $scope.errorPanel = false;
+        }
+
+        $scope.cancelModule = function() {
+            $scope.moduleCreation = false;
+
+        }
+
+        $scope.cancelAssessment = function() {
+            $scope.moduleCreation = false;
+            $scope.moduleDisplay = false;
+
+        }
+
+    })
+</script>
+</body>
+
+</html>

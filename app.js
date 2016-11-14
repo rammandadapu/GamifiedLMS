@@ -33,14 +33,16 @@ app.get('/', user.displayLogin);
 app.post('/signup', user.insertUser);
 //app.post('/signout',user.signout);
 //app.post('/signIn', user.validateUser);
+app.post('/signin', user.signin);
 //course
 app.get('/admin', admin.displayAdminHome);
-app.get('/topicDetail:id', user.topicDetail); //change the route after getting the backend
+app.get('/courseCreation', admin.displayCourseCreation);
+app.get('/topicDetail/:coursename/:id', user.topicDetail); //change the route after getting the backend
 app.get('/courseDetails', user.courseDetails);
 app.get('/getallcourses', course.getCoursesDetails);
 
 app.get('/quiz', function(req,res) {
-res.render("quiz.ejs");
+res.render("quiz.ejs",{"quizId":"83683658765","coursename":"Java"});
 });
 
 //CMS

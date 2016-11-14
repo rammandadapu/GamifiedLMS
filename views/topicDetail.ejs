@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myapp" ng-controller="topicDetailController">
 
 <head>
 
@@ -12,24 +12,27 @@
     <title>Gamified LMS - Learn while you have fun</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 
     <!-- Theme CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/application.css" rel="stylesheet">
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
-    <link href="css/agency.min.css" rel="stylesheet">        
-    <link href="css/myagency.css" rel="stylesheet">  
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/application.css" rel="stylesheet">
+    <link href="/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="/css/agency.min.css" rel="stylesheet">        
+    <link href="/css/myagency.css" rel="stylesheet">  
 
 
     <script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-route.min.js"></script>
+    <script src="/js/anguvideo.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -40,7 +43,7 @@
 
 </head>
 
-<body id="page-top" ng-app="" ng-controller="topicController">
+<body id="page-top">
 
             <!-- Navigation -->
         <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-static-top header-nav" role="navigation" style="margin-bottom: 0">
@@ -271,18 +274,20 @@
             <div class="col-lg-8">
                 <div class="panel panel-default">
                     <div class="panel-heading bg-ylw">
-                        Course: Java
+                        {{coursename}} &nbsp - &nbsp {{modulename}}
                     </div>
 
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-lg-5">
-                                <div class="course-text-content" style="margin:0;">Primitive types are the most basic data types available within the Java language.<br><br> There are 8: boolean , byte , char , short , int , long , float and double . <br><br>These types serve as the building blocks of data manipulation in Java. <br><br>Such types serve only one purpose — containing pure, simple values of a kind.<br><br><b>byte:</b> The byte data type is an 8-bit signed two's complement integer. It has a minimum value of -128 and a maximum value of 127 (inclusive). The byte data type can be useful for saving memory in large arrays, where the memory savings actually matters. They can also be used in place of int where their limits help to clarify your code; the fact that a variable's range is limited can serve as a form of documentation.</div>
+                                <div class="course-text-content" style="margin:0;">{{content}}</div>
+                                
                             </div>
                             <div class="col-lg-7">
-                                <div class="embed-responsive embed-responsive-16by9">
-                                    <iframe class="embed-responsive-item" src="https://www.youtube.com/v/WPvGqX-TXP0"></iframe>
-                                </div>
+                                <!--div class="embed-responsive embed-responsive-16by9">
+                                    <!--iframe class="embed-responsive-item" ng-src="videourl"></iframe-->
+                                    <anguvideo ng-model="videourl" width="450px" height="280px"></anguvideo>
+                                <!--/div-->
              
                             </div>
                         </div>
@@ -291,48 +296,30 @@
                 </div>
             </div>            
         </div>
-
-        <div class="row">    
-            <div class="col-lg-8">                        
-                <div class="panel panel-default">
-                    <div class="panel-heading bg-org">
-                        QUIZ - Earn Badges!
-                    </div>
-                <div class="panel-body"> 
-                    <div class="test-question-block" style="width:inherit">
-                        <div class="row">
-                            <div class="multiple-choice-question">
-                                Question 1: What is the minimum value of a byte?
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <button type="button" class="btn btn-default multiple-choice-option">
-                                    A) -127
-                                </button>
-                            </div>
-                            <div class="col-lg-6">
-                                <button type="button" class="btn btn-default multiple-choice-option">
-                                    B) 0
-                                </button>
-                            </div>                            
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <button type="button" class="btn btn-default multiple-choice-option">
-                                    C) 127
-                                </button>
-                            </div>
-                            <div class="col-lg-6">
-                                <button type="button" class="btn btn-default multiple-choice-option">
-                                    D) 128
-                                </button>
-                            </div>                            
-                        </div>
-                    </div>
-                </div>                            
-            </div>
-        </div>
     </div>
+
+    <script type="text/javascript">
+        
+        var app = angular.module('myapp', ['ngRoute','anguvideo']);
+        app.controller('topicDetailController', function($http, $scope, $location, $routeParams, $sce) {                 
+         $scope.moduleId = <%- JSON.stringify(moduleId) %>;
+         $scope.coursename = <%- JSON.stringify(coursename) %>;
+         $http({
+                    method: 'GET',
+                    url: '/module/'+$scope.moduleId             
+                    
+                 }).success(function(response){             
+                    
+                      $scope.content = response[0].content;
+                      //$scope.videourl = $sce.trustAsResourceUrl(response[0].videourl);
+                      $scope.videourl = response[0].videourl;
+                      $scope.modulename = response[0].title;
+                      //alert(JSON.stringify(response[0].videourl)+" "+JSON.stringify($scope.videourl)); 
+                }).error(function(error){
+                    alert("error");
+                }); 
+        });
+        
+    </script> 
 </body>
 </html>
