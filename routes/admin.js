@@ -8,3 +8,7 @@ exports.displayAdminHome = function(req, res){
 exports.displayCourseCreation = function(req, res){
     res.render('courseCreation', { title: 'Gamified LMS' });
 };
+
+exports.displayAdminAnalytics = function(req, res){
+    res.render('adminAnalytics', { title: 'Gamified LMS' });
+};
