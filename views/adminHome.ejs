@@ -38,7 +38,7 @@
 
 </head>
 
-<body id="page-top" class="index" ng-app="" ng-controller="personController">
+<body id="page-top" class="index" ng-app="myApp" ng-controller="adminController">
 
 <!-- Navigation -->
 <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top header-nav">
@@ -79,44 +79,35 @@
     <div class="container">
         <div class="intro-text">
             <div class="container">
-                <div class="row">
-                    <h2 class="intro-lead-in">Welcome Admin..!</h2>
+                <div class="row text-center">
+                    <h1>
+                        Welcome Admin !
+                    </h1>
                 </div>
-                <div class="card">
-                    <img class="card-img-top" src="..." alt="Card image cap">
-                    <div class="card-block">
-                        <h4 class="card-title">Card title</h4>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
+
                 <div class="row">
                     <div class="col-lg-12">
-                        <form name="register" id="contactForm" novalidate>
                             <div class="row">
                                 <div class="col-lg-12 text-center">
-
-
-                                    <div class="row">
-                                        <div class="col-xs-11 content-layout">
-                                            <div classs="row">
-
-
-
-                                                <div class="col-xs-3 course-ov">
-                                                    <button class="btn-basics btn-view pull-right">VIEW</button>
+                                        <div class="row">
+                                            <div  class="col-xs-4 course-ov">
+                                                <img class="img-course" ng-src="img/java.png" src="img/java.png">
+                                                <button class="btn-basics btn-view course-thumbnail-button hvr-grow-shadow" ng-click="clc.goToCourse(list.link)">View Course</button>
                                                 </div>
-                                                <div class="col-xs-3 course-ov">
-                                                    <button class="btn-basics btn-view pull-right">VIEW</button>
-                                                </div>
+                                            <div  class="col-xs-4 course-ov">
+                                                <img class="img-course" ng-src="img/ruby.png" src="img/ruby.png">
+                                                <button class="btn-basics btn-view course-thumbnail-button hvr-grow-shadow" ng-click="clc.goToCourse(list.link)">View Course</button>
+                                            </div>
+                                            <div  class="col-xs-4 course-ov">
+                                                <img class="img-course" ng-src="img/python.jpg" src="img/python.jpg">
+                                                <button class="btn-basics btn-view course-thumbnail-button hvr-grow-shadow" ng-click="clc.goToCourse(list.link)">View Course</button>
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <button type="submit" class="btn btn-xl" ng-click="signUp()">Add new course!</button>
+                                    <br>
+                                    <br>
+                                    <button type="submit" class="btn btn-xl" ng-click="courseCreation()">Add new course!</button>
                                 </div>
                             </div>
-                        </form>
                     </div>
                 </div>
             </div>
@@ -516,31 +507,34 @@
 
 
 <script>
-    function personController($scope,$http,$location) {
+    angular.module('myApp',[]).controller('adminController',function($scope, $http, $location) {
+        $scope.courseCreation = function () {
+            window.location = '/courseCreation';
+        };
 
         $scope.signUp = function() {
             $http({
                 method: 'POST',
                 url: '/signup',
-                data: { "fname": $scope.fname, "lname": $scope.lname,
-                    "email": $scope.email, "password": $scope.password }
+                data: {
+                    "fname": $scope.fname, "lname": $scope.lname,
+                    "email": $scope.email, "password": $scope.password
+                }
 
-            }).success(function(response){
-                if(response.Status == "Success")
-                {
-                    newURL = '/profile/:'+response.userID;
+            }).success(function (response) {
+                if (response.Status == "Success") {
+                    newURL = '/profile/:' + response.userID;
                     window.location = newURL;
                 }
                 else {
                     document.getElementById("error").innerHTML = response.Status;
                     document.getElementById('erroralert').style.display = "block";
                 }
-            }).error(function(error){
+            }).error(function (error) {
                 document.getElementById("error").innerHTML = response.Status;
                 document.getElementById('erroralert').style.display = "block";
             });
         };
-
 
         $scope.signIn = function() {
             $http({
@@ -564,7 +558,8 @@
                 document.getElementById('erroralert').style.display = "block";
             });
         };
-    }
+    })
+
 </script>
 </body>
 
