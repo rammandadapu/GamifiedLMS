@@ -6,7 +6,6 @@
         <h3 class="section-subheading text-muted">Front end development, Back end development</h3>
     </div>
   </div>
-  {{clc.resdata}}
   <div class="row">
     <div class="col-xs-4">
       <button class="bg-ylw btn-basics btn-w hvr-fade">COURSES</button>
@@ -25,11 +24,17 @@
     </div>
   </div>
   <div class="row">
-    <div ng-repeat="list in clc.encourses" class="col-xs-4 course-ov">
-      <img class="img-course" ng-src={{list.img}}>
-      <button class="btn-basics btn-view course-thumbnail-button hvr-grow-shadow" ng-click="clc.goToCourse(list.link)">View Course</button>
+    <div class="row">
+      <div ng-repeat="list in clc.encourses" class="col-xs-4 course-ov">
+        <div>
+          <div>
+            <img class="img-course" ng-src={{list.imgurl}}>
+            <div class="course-title-index box-center">{{list.name}}</div>
+          </div>
+          <button class="btn-basics btn-view course-thumbnail-button hvr-grow-shadow" ng-click="clc.goToCourse(list._id,list.name)">View Course</button>
+        </div>
+      </div>
     </div>
-  </div>
   <div class="row">
     <div class="col-xs-4">
       <button class="bg-blue btn-basics btn-w-content hvr-fade">TRENDING COURSES</button>
@@ -37,7 +42,10 @@
   </div>
   <div class="row">
     <div ng-repeat="list in clc.tcourses" class="col-xs-4 course-ov">
-      <img class="img-course" src={{list.img}}>
+      <div>
+        <img class="img-course" ng-src={{list.img}}>
+        <div class="course-title-index box-center">{{list.course}}</div>
+      </div>
       <button class="btn-basics btn-view course-thumbnail-button hvr-grow-shadow">Enroll Course</button>
     </div>
   </div>

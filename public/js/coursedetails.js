@@ -1,52 +1,40 @@
 (function(){
 	'use strict';
 
-angular.module('courseapp',[])
+angular.module('courseapp',['ngRoute'])
 .controller('courseController', courseController);
 
-courseController.$inject = ['$scope'];
+courseController.$inject = ['$scope','$http','$routeParams'];
 
-function courseController($scope){
+function courseController($scope, $http,$routeParams){
 	var course = this;
-	course.courseDetails = {
-		courseName : "JAVA",
-		topics: [{
-			name:"Data Types",
-			difficulty: "Easy",
-			topiclock:false,
-			topiccomplete:false
-		}, 
-		{
-			name:"Methods",
-			difficulty: "Medium",
-			topiclock:true,
-			topiccomplete:false
-		},
-		{
-			name:"Classes",
-			difficulty: "Difficult",
-			topiclock:true,
-			topiccomplete:false
-		},
-		{
-			name:"Interfaces",
-			difficulty: "Medium",
-			topiclock:true,
-			topiccomplete:false
-		}]
-	};
-	course.redirect = function(index){
-		if(course.courseDetails.topics[index].topiclock===false){
-			window.location = "/topicDetail:id";
+	//console.log(courseId);
+	course.courseDetails;
+	course.courseName = courseName;
+	goToCourse();
+		function goToCourse(){
+			var a = "/course/"+courseId+"/module";
+			$http({
+			  method: 'GET',
+			  url: a, 
+			}).then((response) => {
+			    course.courseDetails = response.data;
+			    console.log(course.courseDetails);
+			  });
+		};
+	course.redirect = function(id){
+		//console.log(id);
+		if(true){
+			window.location = "/topicDetail/"+courseName+"/"+id;
 		}
 	};
 	course.redirectQuiz = function(index){
-		if(course.courseDetails.topics[index].topiclock===false){
+		if(true){
 			window.location = "/quiz";
 		}
 	};
 	course.topicLock = function(index){
-		if(course.courseDetails.topics[index].topiclock===true){
+		if(true){
 			return "fa-lock";
 		}
 		else{
@@ -54,7 +42,7 @@ function courseController($scope){
 		}
 	};
 	course.challengeLock = function(index){
-		if(course.courseDetails.topics[index].topiclock===false){
+		if(true){
 			return "fa-unlock";
 		}
 		else{
@@ -62,18 +50,19 @@ function courseController($scope){
 		}
 	};
 	course.getColor = function(index){
-		if(course.courseDetails.topics[index].difficulty==="Easy"){
+		//console.log("inside getColor",index,course.courseDetails[index][0].difficulty);
+		if(course.courseDetails[index][0].difficulty==="Easy"){
 			return "topic-easy";
 		} 
-		else if(course.courseDetails.topics[index].difficulty==="Medium"){
+		else if(course.courseDetails[index][0].difficulty==="Medium"){
 			return "topic-medium";
 		} 
-		else if(course.courseDetails.topics[index].difficulty==="Difficult"){
+		else if(course.courseDetails[index][0].difficulty==="Difficult"){
 			return "topic-difficult";
 		}
 	};
 	course.getTopicPtr = function(index){
-		if(course.courseDetails.topics[index].topiclock ===false){
+		if(true){
 			return "pointer";
 		}
 		else{
@@ -81,7 +70,7 @@ function courseController($scope){
 		}
 	};
 	course.getChallengePtr = function(index){
-		if(course.courseDetails.topics[index].topiccomplete ===true){
+		if(true){
 			return "pointer";
 		}
 		else{

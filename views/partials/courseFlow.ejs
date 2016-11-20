@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <div id="coursemodule" class="col-xs-4" ng-controller="courseController as cctrl">
 	<div class="course-heading">
-			{{cctrl.courseDetails.courseName}}
+			{{cctrl.courseName}}
 	</div>
 	<div class="course-box">
-			<div ng-repeat="topic in cctrl.courseDetails.topics">
+			<div ng-repeat="topic in cctrl.courseDetails">
 				<div ng-if="$index!=0" class="line elem-center"></div>
-					<div class="panel panel-default elem-center" ng-click="cctrl.redirect($index)"style="width:200px;" ng-class="cctrl.getTopicPtr($index)">
-							<div class="panel-heading bg-blue" style="text-align:center">
-							{{$index + 1}}. {{topic.name | uppercase}} 
+					<div class="panel panel-default elem-center" ng-click="cctrl.redirect(topic[0]._id)"style="width:200px;" ng-class="cctrl.getTopicPtr($index)">
+							<div class="panel-heading bg-blue" style="text-align:center">							
+							{{$index + 1}}. {{topic[0].title | uppercase}} 
 								<i class="fa fa-lg" ng-class="cctrl.topicLock($index)" aria-hidden="true"></i>
 							</div>
 							<div class="panel-body" style="text-align:center" ng-class="cctrl.getColor($index)">
-							Difficulty: {{topic.difficulty}} 
+							Difficulty: {{topic[0].difficulty}} 
 								<i class="fa fa-lg fa-exclamation-circle" aria-hidden="true"></i>
 							</div>
 					</div>

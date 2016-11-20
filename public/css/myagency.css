@@ -57,7 +57,21 @@
   border-radius: 5px;
   opacity: .8; 
 }
-
+.course-title-index{
+  width:200px;
+  height: 50px;
+  background-color: #a3d6d6;
+  margin: auto;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+.box-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .course-thumbnail-button {
 	position: absolute;
 	top: 75px;

@@ -8,50 +8,58 @@
 	function courseListController($scope, $http){
 		let courselist = this;
 		courselist.resdata;
-
-		courselist.encourses=[{
-			img: "img/java.png",
-			link: "/course/",
-			course:"Java"	
-		},
-		{
-			img: "img/ruby.png",
-			link: "",
-			course:"Java"	
-		},
-		{
-			img: "img/python.jpg",
-			link: "",
-			course:"Java"		
-		}];
+		courselist.encourses;
+		getAllCourses(); 
+		//console.log(courselist.encourses);
+		// courselist.encourses=[{
+		// 	img: "img/java.png",
+		// 	link: "/course/581bd25b5968d1438273c216",
+		// 	course:"Java"
+		// },
+		// {
+		// 	img: "img/ruby.png",
+		// 	link: "",
+		// 	course:"Ruby",
+		// 	id: ""	
+		// },
+		// {
+		// 	img: "img/python.jpg",
+		// 	link: "",
+		// 	course:"Python"	
+		// 	id:"581bd2985968d1438273c217"	
+		// }];
 
 		courselist.tcourses=[{
-			img: "img/algebra.png",
+			img: "img/ruby.png",
 			link: "",
-			course:"Java"		
+			course:"Ruby"		
 		},
 		{
 			img: "img/html.png",
 			link: "",
-			course:"Java"		
+			course:"HTML",
+			id: "581bd2e55968d1438273c218"		
 		},
 		{
 			img: "img/organic.png",
 			link: "",
-			course:"Java"		
+			course:"Organic Chemistry"		
 		}];
 
-		courselist.goToCourse= function(link){
-			var a = link + "581bd25b5968d1438273c216";
+		function getAllCourses(){
 			$http({
 			  method: 'GET',
-			  url: a, 
+			  url: '/course', 
 			}).then((response) => {
-			    // this callback will be called asynchronously
-			    // when the response is available
-			    courselist.resdata = response.data;
+					console.log("Inside getAllCourses",response.data);
+					courselist.encourses = response.data;
+			    //return response.data;
 			  });
 			//window.location = link;
+		}
+		courselist.goToCourse = (id,name)=>{
+			console.log("id: ",id);
+			window.location="/coursedetails/"+id+"/"+name;
 		};
 	}
 	

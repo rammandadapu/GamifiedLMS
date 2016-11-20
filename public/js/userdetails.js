@@ -14,31 +14,31 @@ function userController($scope){
 	user.badges =[{
 		name: "C++ Wizard",
 		points:800,
-		badgeImg:"img/coursedetails/gold.png"
+		badgeImg:"/img/coursedetails/gold.png"
 	},{
 		name: "HTML Wizard",
 		points: 740,
-		badgeImg:"img/coursedetails/topbadge.png"
+		badgeImg:"/img/coursedetails/topbadge.png"
 	},{
 		name: "SCSS Lord",
 		points: 440,
-		badgeImg:"img/coursedetails/bronze.png"
+		badgeImg:"/img/coursedetails/bronze.png"
 	},{
 		name: "MS Wizard",
 		points: 840,
-		badgeImg:"img/coursedetails/gold.png"
+		badgeImg:"/img/coursedetails/gold.png"
 	},{
 		name: "C Newbie",
 		points: 340,
-		badgeImg:"img/coursedetails/topbadge.png"
+		badgeImg:"/img/coursedetails/topbadge.png"
 	},{
 		name: "D3JS Wizard",
 		points: 740,
-		badgeImg:"img/coursedetails/gold.png"
+		badgeImg:"/img/coursedetails/gold.png"
 	},{
 		name: "ReactJS Newbie",
 		points: 400,
-		badgeImg:"img/coursedetails/topbadge.png"
+		badgeImg:"/img/coursedetails/topbadge.png"
 	}];
 
 	user.rankings =[{

@@ -40,7 +40,7 @@ app.get('/courseCreation', admin.displayCourseCreation);
 app.get('/adminAnalytics', admin.displayAdminAnalytics);
 app.get('/assessmentCreation', admin.displayAssesstmentCreation);
 app.get('/topicDetail/:coursename/:id', user.topicDetail); //change the route after getting the backend
-app.get('/courseDetails', user.courseDetails);
+app.get('/courseDetails/:id/:name', user.courseDetails);
 app.get('/getallcourses', course.getCoursesDetails);
 
 app.get('/quiz', function(req,res) {

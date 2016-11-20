@@ -70,7 +70,7 @@ exports.getCoursesDetails = function (req, res) {
     if (null != courseid && undefined != courseid) {
         query["_id"] = new ObjectId(courseid);
     } else {
-        columnFilter = {"name": 1, "description": 1}
+        columnFilter = {"name": 1, "description": 1,"imgurl": 1};
     }
     utilCode.handleResponse('courses', query, columnFilter, res);
 

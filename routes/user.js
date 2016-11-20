@@ -92,6 +92,7 @@ exports.topicDetail = function(req, res){
 };
 
 exports.courseDetails = function(req, res){
-	  res.render('courseDetails', { title: 'Gamified Courses' });
+		console.log("course detail called----");	
+	  res.render('courseDetails', { title: 'Gamified Courses', courseId: req.param("id"), courseName: req.param("name") });
 	};
 
