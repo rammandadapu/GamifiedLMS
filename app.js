@@ -47,6 +47,12 @@ app.get('/quiz', function(req,res) {
 res.render("quiz.ejs",{"quizId":"83683658765","coursename":"Java"});
 });
 
+
+//Course Progress
+app.post('/course/:courseid/user/:userid',courseProgress.enrollIntoCourse);
+app.get('/course/:courseid/user/:userid',courseProgress.getAllModulesOfRegisteredCourse);
+
+
 //CMS
 //course
 app.post('/course', course.createCourse);
@@ -58,9 +64,6 @@ app.get('/course/:courseid/module', course.getAllModulesofCourse);
 app.get('/assessment/:assessmentid', course.getAssessment);
 app.get('/search/:q', course.searchCourse);
 
-
-
-app.post('/courseProgress',courseProgress.createCourseProgress);
 
 http.createServer(app).listen(app.get('port'), function () {
     // console.log('Express server listening on port ' + app.get('port'));
