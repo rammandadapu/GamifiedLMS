@@ -51,7 +51,7 @@ res.render("quiz.ejs",{"quizId":"83683658765","coursename":"Java"});
 //Course Progress
 app.post('/course/:courseid/user/:userid',courseProgress.enrollIntoCourse);
 app.get('/course/:courseid/user/:userid',courseProgress.getAllModulesOfRegisteredCourse);
-
+app.post('/course/:courseid/module/:moduleid/user/:userid',courseProgress.postQuizResults);
 
 //CMS
 //course
