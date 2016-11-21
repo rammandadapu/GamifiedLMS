@@ -302,8 +302,9 @@
                 data: { "fname": $scope.fname, "lname": $scope.lname,
                         "email": $scope.email, "password": $scope.password }
                 
-             }).success(function(response){                                   
-                if(response.status == "Success")
+             }).success(function(response){ 
+                alert(JSON.stringify(response));                                  
+                if(response == "success")
                     {                       
                         newURL = '/profile/:'+response.userID;
                         window.location = newURL;

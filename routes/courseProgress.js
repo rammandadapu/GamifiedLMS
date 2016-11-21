@@ -36,5 +36,11 @@ exports.getAllModulesOfRegisteredCourse=function(req,res){
     utilCode.handleMethodCall(utilCode.getDetails, ['courseprogress', {"courseid": courseId,"userid":userId},{}], res);
 }
 
+exports.postQuizResults = function (req,res) {
+    var courseId = new ObjectId(req.param("courseid"));
+    var userId = new ObjectId(req.param("userid"));
+    var moduleId = new ObjectId(req.param("moduleid"));
+    utilCode.handleMethodCall(utilCode.updateDetails, ['courseprogress', {"courseid": courseId,"userid":userId,"modules._id":moduleId},{$set: { "modules.$.status": true }}], res);
 
+}
 

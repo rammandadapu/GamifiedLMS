@@ -25,7 +25,7 @@ exports.signin=function(req,res) {
 	                    console.log(err);
 	                    res.send({'status':'error'});
 	                } else {
-	                    console.log(result);
+	                	req.session.uid = result._id;	                    
 	                    db.close();
 	                    res.status(200);
 	                    res.send({'status':'success'});
@@ -71,7 +71,7 @@ exports.insertUser=function(req,res){
 				      } else {
 							logger.info('Inserted:', result);
 				          //console.log('Inserted:', result);
-				          res.end("successful");
+				          res.end("success");
 				      }
 			    	db.close();
 			    });
