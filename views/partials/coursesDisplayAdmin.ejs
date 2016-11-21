@@ -1,0 +1,61 @@
+<!Doctype HTML>
+<div id="courselist" class="container" ng-controller="courseListController as clc">
+  <div class="row">
+    <div class="col-lg-12 text-center">
+      <h1>
+        Welcome Admin !
+      </h1>
+        <h3 class="section-heading">List of Courses Created</h3>
+        <h5 class="section-subheading text-muted">Focus Area: Front end development & Back end development</h5>
+    </div>
+  </div>
+  <%include search-modal.ejs %>
+  <div class="row">
+    <!-- <div class="col-xs-4">
+      <button class="bg-ylw btn-basics btn-w hvr-fade">COURSES</button>
+    </div> -->
+    <!--<div class="col-xs-4">-->
+    <!--<button class="bg-org btn-basics btn-w hvr-fade" ng-click="goToCourse('','')">PERSONAL BADGES</button>-->
+    <!--</div>-->
+    <div class="col-xs-12 search-box text-right">
+      <input type="search" name="q" ng-model=searchTerm class="input-bsc" placeholder="search for course">
+      <button ng-click="searchCourse()">Go!</button>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-xs-4">
+      <button type="submit" class="btn btn-xl" ng-click="courseCreation()">Click to Add new course!</button>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="row" style="height: 500px;overflow-y: auto;">
+      <div ng-repeat="list in clc.encourses" class="col-xs-4 course-ov">
+        <div>
+          <div>
+            <img class="img-course" ng-src={{list.imgurl}}>
+            <div class="course-title-index box-center">{{list.name}}</div>
+          </div>
+          <button class="btn-basics btn-view course-thumbnail-button hvr-grow-shadow" ng-click="goToCourse(list._id,list.name)">View Course</button>
+        </div>
+      </div>
+    </div>
+    <br>
+  <div class="row">
+    <div class="col-xs-4">
+      <button type="submit" class="btn btn-xl">Trending Courses</button>
+    </div>
+  </div>
+  <div class="row">
+    <div ng-repeat="list in clc.tcourses" class="col-xs-4 course-ov">
+      <div>
+        <img class="img-course" ng-src={{list.img}}>
+        <div class="course-title-index box-center">{{list.course}}</div>
+      </div>
+      <!--<button class="btn-basics btn-view course-thumbnail-button hvr-grow-shadow">Enroll Course</button>-->
+    </div>
+  </div>
+</div>
+</div>
+

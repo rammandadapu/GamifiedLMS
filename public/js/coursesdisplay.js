@@ -88,8 +88,13 @@ angular.module('courselistapp',[])
 			}
 			window.location="/coursedetails/"+id+"/"+name;
 		};
+
+		//admin home page
+		$scope.courseCreation = function () {
+			window.location = '/courseCreation';
+		};
 	}
-	
+
 	angular.element(document).ready(function(){
 				angular.bootstrap(document.getElementById("courselist"), ['courselistapp']);
 	});
