@@ -284,7 +284,7 @@
                         QUIZ - Earn Badges!
                     </div>
                 <div class="panel-body">
-                    <div ng-repeat="question in data">
+                    <div ng-repeat="question in data" ng-init="questionNum = $index">
                         <div ng-if="question.questiontype=='categories'" class="test-question-block">
                             <div class="row">                            
                                 <div class="multiple-choice-question">
@@ -299,7 +299,7 @@
                                 
 
                             <div class="row">                            
-                                <ul class="connectedSortable result-bucket" ng-repeat="category in question.categories">
+                                <ul class="connectedSortable result-bucket" id="category_{{questionNum}}_{{$index}}" ng-repeat="category in question.categories">
                                   {{category}}
                                 </ul>                            
                             </div>
@@ -311,18 +311,18 @@
                                     {{$index+1}})&nbsp;{{ question.question }}
                                 </div>
                             </div>
-                            <div class="btn-group" data-toggle="buttons">
+                            <div class="btn-group">
                                 <label class="btn btn-default multiple-choice-option" style="border-radius:5px;">
-                                    <input type="radio" name="options" id="optionA">A) {{question.choices[0]}}
+                                    <input type="radio" ng-model="question.selectedanswer" ng-value="question.choices[0]">A) {{question.choices[0]}}
                                 </label> 
                                 <label class="btn btn-default multiple-choice-option" style="border-radius:5px;">
-                                    <input type="radio" name="options" id="optionB">B) {{question.choices[1]}}
+                                    <input type="radio" ng-model="question.selectedanswer" ng-value="question.choices[1]">B) {{question.choices[1]}}
                                 </label>    
                                 <label class="btn btn-default multiple-choice-option" style="border-radius:5px;">
-                                    <input type="radio" name="options" id="optionC">C) {{question.choices[2]}}
+                                    <input type="radio" ng-model="question.selectedanswer" ng-value="question.choices[2]">C) {{question.choices[2]}}
                                 </label> 
                                 <label class="btn btn-default multiple-choice-option" style="border-radius:5px;">
-                                    <input type="radio" name="options" id="optionD">D) {{question.choices[3]}}
+                                    <input type="radio" ng-model="question.selectedanswer" ng-value="question.choices[3]">D) {{question.choices[3]}}
                                 </label> 
                             </div>                            
                         </div>
@@ -331,21 +331,21 @@
                             <div class="row">
                                 <div class="multiple-choice-question">
                                     {{$index+1}})&nbsp;{{ question.question }}
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="btn-group" data-toggle="buttons">
-                                    <label class="btn btn-default multiple-choice-option" style="border-radius:5px;">
-                                        <input type="radio" name="trueorfalseoptions" id="trueoption">True
-                                    </label> 
-                                    <label class="btn btn-default multiple-choice-option" style="border-radius:5px;">
-                                        <input type="radio" name="trueorfalseoptions" id="falseoption">False
-                                    </label>                                    
-                                </div>                            
-                            </div>
+                                </div>                                                                
+                            </div>                                                        
+                            <div class="btn-group">
+                                <label class="btn btn-default multiple-choice-option" style="border-radius:5px;">
+                                    <input type="radio" ng-model="question.selectedanswer" value="true">True
+                                </label>
+                                <label class="btn btn-default multiple-choice-option" style="border-radius:5px;">
+                                    <input type="radio" ng-model="question.selectedanswer" value="false">False
+                                </label>
+                            </div>                            
                         </div>
                         
-                    </div>
+                    </div>                                    
+                    
+                    <button type="button" ng-click="validateQuiz()">Submit quiz</button>
                     <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
                     <!-- Modal -->
                     <div id="myModal" class="modal fade" role="dialog">
@@ -388,10 +388,10 @@
     <script type="text/javascript">
         
         var app = angular.module('myapp', []);
-        app.controller('quizController', function($http, $scope, $location) {                 
+        app.controller('quizController', function($http, $scope, $location, $timeout) {                 
          $scope.quizId = <%- JSON.stringify(quizId) %>;
-         $scope.coursename = <%- JSON.stringify(coursename) %>;           
-
+         $scope.coursename = <%- JSON.stringify(coursename) %>;  
+                     
          /*$http({
                     method: 'GET',
                     url: '/quiz/'+$scope.quizId             
@@ -402,11 +402,80 @@
                     alert("error");
                 }); 
         });*/
-        $scope.data = [{"questiontype":"categories","categories":["keywords","variables","datatypes"],"items":["int","area","length","class","help","float","else"],"answer":[{"category":"keywords","items":["class","else","length"]},{"category":"variables","items":["help","desk","height","area"]},{"category":"datatypes","items":["int","float"]}]},
+        $scope.data = [{"questiontype":"categories","categories":["keywords","variables","datatypes"],"items":["int","area","length","class","help","float","else","desk","height"],"answer":[{"category":"keywords","items":["class","else","length"]},{"category":"variables","items":["help","desk","height","area"]},{"category":"datatypes","items":["int","float"]}]},
 {"questiontype":"multiplechoice","question":"What is the minimum value of a byte?","choices":["-127","0","127","128"],"answer":"-127"},
 {"questiontype":"trueorfalse","question":"There is no automatic garbage collection in Java.","answer":"false"}];
+
+        $scope.validateQuiz = function() {                        
+            var quizpassed = true;
+            angular.forEach($scope.data, function(question,key){
+                if(quizpassed == true) {
+                    if(question.questiontype == "categories") {             
+                        for(var cat=0; cat<question.categories.length; cat++) {                        
+                            var ul = document.getElementById("category_"+key+"_"+cat); 
+                            var categoryName = question.categories[cat]; 
+                            alert(categoryName);                      
+                            var items = ul.getElementsByTagName("li");
+                            var itemArray = [];
+                            for (var i = 0; i < items.length; ++i) {
+                                itemArray.push(items[i].innerHTML);
+                            }
+                            itemArray.sort();
+                            
+                            var answerArray = question.answer.filter(function(item) {
+                                return item.category == categoryName;
+                            })[0].items;
+
+                            answerArray.sort();
+
+                            alert(JSON.stringify(itemArray));
+                            alert(JSON.stringify(answerArray));
+
+                            var same = false;
+
+                            if(itemArray.length == answerArray.length) {
+                                same = true;   
+                                for(var j=0; j<itemArray.length; j++) {
+                                    alert(itemArray[j]+" "+answerArray[j]);
+                                    if(itemArray[j] != answerArray[j]) {
+                                        same = false;
+                                        break;
+                                    }
+                                }
+                            }
+
+                            if(!same) {
+                                quizpassed = false;
+                                break;
+                            } 
+                        }                                                        
+                    }
+                    else if(question.questiontype == "multiplechoice") {
+                        if(question.answer != question.selectedanswer) {
+                            quizpassed = false;                            
+                        }
+                    }
+                    else if(question.questiontype == "trueorfalse") {
+                        if(question.answer != question.selectedanswer) {
+                            quizpassed = false;                            
+                        }
+                    }
+                }
+            });
+            if(quizpassed == true) {
+                alert("yay! you passed");
+            }
+            else {
+                alert("oops! try again");
+            }
+
+            
+            };
+        
         
 });
+
+        
         
     </script> 
 </body>
