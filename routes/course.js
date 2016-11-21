@@ -27,9 +27,10 @@ exports.createModule = function (req, res) {
     var module = {};
     module["title"] = req.param("title");
     module["content"] = req.param("content");
-    module["points"] = req.param("points");
     module["difficulty"] = req.param("difficulty");
     module["videourl"] = req.param("videourl");
+    module["points"] = req.param("points");
+    module["badgename"] = req.param("badgename");
     module["assessments"] = [];
 
     var promise = c2p(utilCode.insertDetails)('modules', module);
@@ -50,15 +51,22 @@ exports.createAssessment = function (req, res) {
     var assessment = {};
     assessment["questions"] = [];
     assessment["questions"].push(req.param("question"));
-    var promise = c2p(utilCode.insertDetails)('assessments', assessment);
+    var assessmentid =  req.param("assessmentid");
+    if (null == assessmentid && undefined == assessmentid) {
+        var promise = c2p(utilCode.insertDetails)('assessments', assessment);
+        promise.then(function (result) {
+            //Linking module to assessments
+            utilCode.linkDocuments('modules', req.param('moduleid'), result.ops[0]._id, 'assessments');
+            utilCode.sendResponse(201, result, res);
+        }).catch(function (err) {
+            utilCode.sendResponse(404, "Failed", res);
+        })
+    }
+    else{
+        utilCode.handleMethodCall(utilCode.updateDetails, ['assessments', {"_id": new ObjectId(assessmentid)},{$push: {"questions":req.param("question")}}], res);
+    }
 
-    promise.then(function (result) {
-        //Linking module to assessments
-        utilCode.linkDocuments('modules', req.param('moduleid'), result.ops[0]._id, 'assessments');
-        utilCode.sendResponse(201, result, res);
-    }).catch(function (err) {
-        utilCode.sendResponse(404, "Failed", res);
-    })
+
 
 }
 

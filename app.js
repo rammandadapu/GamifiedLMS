@@ -57,7 +57,7 @@ app.post('/course/:courseid/module/:moduleid/user/:userid',courseProgress.postQu
 //course
 app.post('/course', course.createCourse);
 app.post('/course/:courseid/module',course.createModule);
-app.post('/module/:moduleid/assessment',course.createAssessment);
+app.post('/module/:moduleid/assessment/:assessmentid?',course.createAssessment);
 app.get('/course/:id?', course.getCoursesDetails);
 app.get('/module/:moduleid', course.getModuleDetails);
 app.get('/course/:courseid/module', course.getAllModulesofCourse);
