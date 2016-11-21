@@ -1,6 +1,6 @@
 (function(){
 	'use strict';
-	angular.module('courselistapp',[])
+angular.module('courselistapp',[])
 .controller('courseListController', courseListController);
 
 	courseListController.$inject = ['$scope','$http'];
@@ -9,6 +9,10 @@
 		let courselist = this;
 		courselist.resdata;
 		courselist.encourses;
+		$scope.searchTerm;
+		$scope.searchedCourses;
+		//courselist.searchTerm;
+		//courselist.searchedCourses;
 		getAllCourses(); 
 		//console.log(courselist.encourses);
 		// courselist.encourses=[{
@@ -57,8 +61,31 @@
 			  });
 			//window.location = link;
 		}
-		courselist.goToCourse = (id,name)=>{
+
+		$scope.searchCourse = ()=>{
+			console.log($scope.searchTerm);
+			$http({
+			  method: 'GET',
+			  url: '/search/'+ $scope.searchTerm, 
+			  //url: '/search/'+ courselist.searchTerm, 
+			}).then((response) => {
+					console.log("Inside searchedCourses",response.data);
+					$scope.searchedCourses = response.data;
+					console.log($scope.searchedCourses);
+					document.getElementById('searchLink').click();
+					//courselist.searchedCourses = response.data;
+					//console.log(courselist.searchedCourses);
+
+			    //return response.data;
+			  });
+		};
+
+		$scope.goToCourse = (id,name)=>{
 			console.log("id: ",id);
+			if(name==''&&id==''){
+				name=courselist.encourses[0].name;
+				id= courselist.encourses[0]._id;
+			}
 			window.location="/coursedetails/"+id+"/"+name;
 		};
 	}

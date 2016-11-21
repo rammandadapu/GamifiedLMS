@@ -1,7 +1,7 @@
 (function(){
 	'use strict';
 
-angular.module('userapp',[])
+angular.module('userapp',['courselistapp'])
 .controller('userController', userController);
 
 userController.$inject = ['$scope'];

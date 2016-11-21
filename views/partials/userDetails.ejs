@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <div id="usermodule" class="col-xs-8" ng-controller="userController as user">
+<div ng-controller="courseListController">
 	<div class="row" style="margin:12px;"><!--style="color:#777;background:#ccffcc;" -->
 			<div class="col-xs-3">TITLE: {{user.titl}}</div>
 			<div class="col-xs-3">SCORE: {{user.score}}</div>
 		<!--</div>
 	<div class="row" style="margin-bottom: 9px;">-->
+	<%include search-modal.ejs %>
 		<div class="col-xs-6 search-box">
-		<form action="/search" method="GET">
-			<input type="search" name="q" class="input-bsc" placeholder="search">
-			<button type="submit" >Go!</button>
-		</form>
+			<input type="search" name="q" ng-model=searchTerm class="input-bsc" placeholder="search">
+			<button ng-click="searchCourse()" >Go!</button>
 		</div>
 	</div>
+    </div>
 	
 	<div class="row user-box">
 		

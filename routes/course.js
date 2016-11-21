@@ -106,8 +106,8 @@ exports.getAssessment = function (req, res) {
 exports.searchCourse = function (req, res) {
     var keyword = req.param("q");
     var query = [{$match: {$or: [{'name': {$regex: '.*' + keyword + '.*',"$options": "i"}}, {'title': {$regex: '.*' + keyword + '.*',"$options": "i"}}, {'description': {$regex: '.*' + keyword + '.*',"$options": "i"}}]}},
-        {$project: {'title': 1, 'name': 1, 'description':1}}];
-    utilCode.handleMethodCall(callAggregate, ['courses', query], res);
+        {$project: {'title': 1, 'name': 1, 'description':1, 'imgurl':1}}];
+    utilCode.handleMethodCall(utilCode.callAggregate, ['courses', query], res);
 }
 
 exports.getAllModulesofCourse = function (req, res) {

@@ -1,0 +1,19 @@
+<a id="searchLink" href="#openModal">Open Modal</a>
+
+<div id="openModal" class="modalDialog">
+  <div>
+    <a href="#close" title="Close" class="close">X</a>
+    <h2>Available Courses</h2>
+    <div class="row">
+      <div ng-repeat="list in searchedCourses" class="col-xs-4 course-ov">
+        <div>
+          <div>
+            <img class="img-course" ng-src={{list.imgurl}}>
+            <div class="course-title-index box-center">{{list.name}}</div>
+          </div>
+          <button class="btn-basics btn-view course-thumbnail-button hvr-grow-shadow" ng-click="goToCourse(list._id,list.name)">View Course</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
