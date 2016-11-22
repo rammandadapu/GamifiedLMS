@@ -398,7 +398,15 @@
                         <br>
                         <br>
                         <label  class="col-sm-2 control-label">
-                            Content Video URL :
+                            Badge name :
+                        </label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="title" ng-model='badgeName' placeholder="Enter Badge Name" required>
+                        </div>
+                        <br>
+                        <br>
+                        <label  class="col-sm-2 control-label">
+                            Video URL :
                         </label>
                         <div class="col-sm-6">
                             <input type="text" class="form-control" name="videoURL" ng-model='videourl' placeholder="Enter Video URL" required>
@@ -546,7 +554,7 @@
                     url: '/course/'+currentCourse+'/module',
                     data: {
                         "title": $scope.moduleTitle, "content": $scope.content, "points": $scope.points, "difficulty": $scope.difficulty,
-                         "videourl": $scope.videourl
+                        "badgename":$scope.badgeName, "videourl": $scope.videourl
                     }
 
                 }).success(function (response) {
