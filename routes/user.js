@@ -68,10 +68,12 @@ exports.insertUser=function(req,res){
 				        //console.log(err);
 						logger.error('Error in inserting the user details. Error:', err);
 				        res.end("error");
+				        
 				      } else {
 							logger.info('Inserted:', result);
 				          //console.log('Inserted:', result);
 				          res.end("success");
+				          
 				      }
 			    	db.close();
 			    });
@@ -95,4 +97,34 @@ exports.courseDetails = function(req, res){
 		console.log("course detail called----");	
 	  res.render('courseDetails', { title: 'Gamified Courses', courseId: req.param("id"), courseName: req.param("name") });
 	};
+
+exports.displayQuiz = function(req,res) {
+	console.log("display quiz called----");
+	console.log("user id:"+req.session.uid);
+
+	/*
+	MongoClient.connect(url, function (err, db) {
+	        if (err) {
+	            console.log('Unable to connect to the mongoDB server. Error:', err);
+	        } else {
+	            console.log('Connection established to', url);
+	            var collection = db.collection('courses');	            
+	            collection.findOne({"email":email,"password":pswd},function (err, result) {
+	                if (err) {
+	                    console.log(err);
+	                    res.send({'status':'error'});
+	                } else {
+	                	req.session.uid = result._id;	                    
+	                    db.close();
+	                    res.status(200);
+	                    res.send({'status':'success'});
+
+	                }
+
+	            });
+	        }
+	    }); */
+
+	res.render("quiz.ejs",{"quizId":req.param("quizId"),"coursename":req.param("coursename"),"courseId":req.param("courseId"),"moduleId":req.param("moduleId"), "userId":req.session.uid});
+}
 

@@ -303,19 +303,27 @@
                         "email": $scope.email, "password": $scope.password }
                 
              }).success(function(response){ 
-                alert(JSON.stringify(response));                                  
+                
+
                 if(response == "success")
                     {                       
-                        newURL = '/profile/:'+response.userID;
-                        window.location = newURL;
+                        alert("Successfully registered! Please log in.");
+                        $scope.fname = "";
+                        $scope.lname = "";
+                        $scope.email = "";
+                        $scope.password = ""; 
+                        //newURL = '/profile/:'+response.userID;
+                        //window.location = newURL;
                     }                          
                 else {
-                        document.getElementById("error").innerHTML = response.Status;
-                        document.getElementById('erroralert').style.display = "block";
+                        //document.getElementById("error").innerHTML = response.Status;
+                        //document.getElementById('erroralert').style.display = "block";
+                        alert("There was an error while registering. Please try again.");
                     }
             }).error(function(error){
-                document.getElementById("error").innerHTML = response.Status;
-                document.getElementById('erroralert').style.display = "block";
+                //document.getElementById("error").innerHTML = response.Status;
+                //document.getElementById('erroralert').style.display = "block";
+                alert("There was an error while registering. Please try again.");
             });
         };
     
@@ -338,8 +346,9 @@
                         $scope.invalidLoginVal = "Email/Password invalid!";
                     }                   
             }).error(function(error){
-                document.getElementById("error").innerHTML = "An error occurred!"
-                document.getElementById('erroralert').style.display = "block";
+                //document.getElementById("error").innerHTML = "An error occurred!"
+                //document.getElementById('erroralert').style.display = "block";
+                alert("There was an error while login. Please try again.");
             });
         };
     }

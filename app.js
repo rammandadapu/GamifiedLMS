@@ -3,6 +3,7 @@ var express = require('express')
     , user = require('./routes/user')
     , admin = require('./routes/admin')
     , course = require('./routes/course')
+    , quiz = require('./routes/quiz')
     , logger = require('./logger/logger')
     , path = require('path')
     , courseProgress = require('./routes/courseProgress');
@@ -43,9 +44,8 @@ app.get('/topicDetail/:coursename/:id', user.topicDetail); //change the route af
 app.get('/courseDetails/:id/:name', user.courseDetails);
 app.get('/getallcourses', course.getCoursesDetails);
 
-app.get('/quiz', function(req,res) {
-res.render("quiz.ejs",{"quizId":"83683658765","coursename":"Java"});
-});
+//quiz/5833494834d4fff52203b5fd/course/5815615b26dd983e536198fa/module/5815622626dd983e536198fb/coursename/Java
+app.get('/quiz/:quizId/course/:courseId/module/:moduleId/coursename/:coursename', user.displayQuiz);
 
 
 //Course Progress
@@ -64,6 +64,14 @@ app.get('/course/:courseid/module', course.getAllModulesofCourse);
 app.get('/assessment/:assessmentid', course.getAssessment);
 app.get('/search/:q', course.searchCourse);
 
+app.get('/pinkmonk',function(req,res) {
+    var pinky = ["a","b","c"];
+    var monkey = ["1","2","3"];
+    var final = {};
+    final.pinky = pinky;
+    final.monkey = monkey;    
+    res.send(final);
+})
 
 http.createServer(app).listen(app.get('port'), function () {
     // console.log('Express server listening on port ' + app.get('port'));
