@@ -50,7 +50,7 @@ exports.createAssessment = function (req, res) {
 
     var assessment = {};
     assessment["questions"] = [];
-    assessment["questions"].push(JSON.parse(req.param("question")));
+    assessment["questions"].push(req.param("question"));
     var assessmentid =  req.param("assessmentid");
     if (null == assessmentid && undefined == assessmentid) {
         var promise = c2p(utilCode.insertDetails)('assessments', assessment);
@@ -63,7 +63,7 @@ exports.createAssessment = function (req, res) {
         })
     }
     else{
-        utilCode.handleMethodCall(utilCode.updateDetails, ['assessments', {"_id": new ObjectId(assessmentid)},{$push: {"questions":JSON.parse(req.param("question"))}}], res);
+        utilCode.handleMethodCall(utilCode.updateDetails, ['assessments', {"_id": new ObjectId(assessmentid)},{$push: {"questions":req.param("question")}}], res);
     }
 
 

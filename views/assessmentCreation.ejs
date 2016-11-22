@@ -12,24 +12,25 @@
     <title>Gamified LMS - Learn while you have fun</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 
     <!-- Theme CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/application.css" rel="stylesheet">
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
-    <link href="css/agency.min.css" rel="stylesheet">
-    <link href="css/myagency.css" rel="stylesheet">
-    <link href="css/coursedetails.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/application.css" rel="stylesheet">
+    <link href="/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="/css/agency.min.css" rel="stylesheet">
+    <link href="/css/myagency.css" rel="stylesheet">
+    <link href="/css/coursedetails.css" rel="stylesheet">
 
     <script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.min.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -40,7 +41,7 @@
 
 </head>
 
-<body id="page-top" ng-app="" ng-controller="formController" style="overflow: hidden">
+<body id="page-top" ng-app="myApp" ng-controller="formController">
 
 <!-- Navigation -->
 <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-static-top header-nav" role="navigation" style="margin-bottom: 0">
@@ -65,9 +66,11 @@
             <a href="#page-top"></a>
         </li>
         <li>
-            <a class="page-scroll" href="#adminconsole">Home</a>
+            <a class="page-scroll" href="/admin">Admin Home</a>
         </li>
-
+        <li>
+            <a class="page-scroll" href="/adminAnalytics">Analytics</a>
+        </li>
         <li>
             <a class="page-scroll" href="#about">About Us</a>
         </li>
@@ -289,13 +292,20 @@
         <form role="form">
             <div class="form-group col-lg-12 ">
                 <center><h3>Assessment Creation</h3><h4>Question Type:</h4></center>
-
+                <div class="alert alert-danger" ng-show='errorPanel'>
+                    <span class="glyphicon glyphicon-exclamation-sign"></span>
+                    Error: {{errorMsg}}
+                </div>
+                <div class="alert alert-success" ng-show='successPanel'>
+                    <span class="glyphicon glyphicon-exclamation-sign"></span>
+                    Success: {{successMsg}}
+                </div>
                 <div class = "col-lg-4 col-md-offset-4">
                     <center>
                         <select id = "question" ng-model = "selectedQuestion" class="form-control" ng-change="questionChange(selectedQuestion)">
-                            <option value="category">Category</option>
-                            <option value="multiple">Multiple Choice</option>
-                            <option value="trueFalse">True or False</option>
+                            <option value="categories">Category</option>
+                            <option value="multiplechoice">Multiple Choice</option>
+                            <option value="trueorfalse">True or False</option>
                         </select>
                     </center>
                 </div>
@@ -336,29 +346,27 @@
         </form>
 
     </div>
-    <div class="panel panel-default col-lg-12 -align-center"  ng-show = "multipleShow">
-        <br>
-        <br>
+    <div class="col-lg-12 -align-center"  ng-show = "multipleShow">
         <form role="form">
             <div class="form-group" >
                 <label class = "control-label col-md-2 col-sm-3 col-xs-3 col-md-offset-4">Enter Question:</label>
                 <div class="col-md-3 col-sm-2 col-xs-4 col-md-offset-left-2">
-                    <input type="text" class="form-control" ng-model="question" placeholder="Enter Question">
+                    <input type="text" class="form-control" ng-model="multipleQues" placeholder="Enter Question">
                 </div>
                 <br>
                 <br>
                 <label class = "control-label col-md-2 col-sm-3 col-xs-3 col-md-offset-4">Enter Options:</label>
                 <div class="col-md-3 col-sm-2 col-xs-4 col-md-offset-left-2">
-                    <input type="text" class="form-control" name="city" ng-model='option1' placeholder="Enter Option1" required><br><br>
-                    <input type="text" class="form-control" name="city" ng-model='option2' placeholder="Enter Option2" required><br><br>
-                    <input type="text" class="form-control" name="city" ng-model='option3' placeholder="Enter Option3" required><br><br>
-                    <input type="text" class="form-control" name="city" ng-model='option4' placeholder="Enter Option4" required><br><br>
+                    <input type="text" class="form-control" name="city" ng-model='option1' placeholder="Enter Option1" required><br>
+                    <input type="text" class="form-control" name="city" ng-model='option2' placeholder="Enter Option2" required><br>
+                    <input type="text" class="form-control" name="city" ng-model='option3' placeholder="Enter Option3" required><br>
+                    <input type="text" class="form-control" name="city" ng-model='option4' placeholder="Enter Option4" required><br>
                 </div>
                 <br>
                 <br>
                 <label class = "control-label col-md-2 col-sm-3 col-xs-3 col-md-offset-4">Enter Answer:</label>
                 <div class="col-md-3 col-sm-2 col-xs-4 col-md-offset-left-2">
-                    <input type="text" class="form-control" ng-model="question" placeholder="Enter Answer">
+                    <input type="text" class="form-control" ng-model="multipleAns" placeholder="Enter Answer">
                 </div>
                 <br>
                 <br>
@@ -380,21 +388,21 @@
             </div>
         </form>
     </div>
-    <div class="panel panel-primary col-lg-12 -align-center" ng-show = "trueShow">
+    <div class="col-lg-12 -align-center" ng-show = "trueShow">
         <form role="form">
             <div class="form-group" >
                 <label class = "control-label col-md-2 col-sm-3 col-xs-3 col-md-offset-4">Enter Question:</label>
                 <div class="col-md-3 col-sm-2 col-xs-4 col-md-offset-left-2">
-                    <input type="text" class="form-control" ng-model="question" placeholder="Enter Question">
+                    <input type="text" class="form-control" ng-model="booleanQuestion" placeholder="Enter Question">
                 </div>
                 <br>
                 <br>
                 <label class = "control-label col-md-2 col-sm-3 col-xs-3 col-md-offset-4">Select True or False:</label><br>
                 <div class="col-md-3 col-sm-2 col-xs-4 col-md-offset-left-2">
-                    <label> <input type="radio" ng-model="trueAnswer" ng-value="trueA">True </label>
+                    <label> <input type="radio" ng-model="radioAns" value = "true">True </label>
                     <br>
                     <br>
-                    <label>  <input type="radio" ng-model="falseAnswer" ng-value="falseA">False</label>
+                    <label>  <input type="radio" ng-model="radioAns" checked value = "false">False</label>
                 </div>
                 <br>
                 <br>
@@ -436,10 +444,13 @@
     </div>
 </footer>
 <script>
-    var app = angular.module('myApp',[]);
-    function formController($scope,$http,$location) {
 
-
+    angular.module('myApp',[]).controller('formController',function($scope, $http, $location) {
+        var moduleId = <%- JSON.stringify(moduleId) %>;
+        var selectedQuesType;
+        var assessmentId = "";
+        $scope.errorPanel = false;
+        $scope.successPanel = false;
         $scope.subcategory = [];
         $scope.addfield=function(){
             $scope.subcategory.push({})
@@ -450,21 +461,79 @@
         $scope.multipleShow = false;
         $scope.trueShow = false;
         $scope.questionChange = function(selectedQuestion) {
-            if(selectedQuestion === 'category')  {
+            $scope.successPanel = false;
+            $scope.errorPanel = false;
+            selectedQuesType = selectedQuestion
+            if(selectedQuestion === 'categories')  {
                 $scope.categoryShow = true;
                 $scope.multipleShow = false;
                 $scope.trueShow = false;
-            }   else if (selectedQuestion === 'multiple') {
+            }   else if (selectedQuestion === 'multiplechoice') {
                 $scope.categoryShow = false;
                 $scope.multipleShow = true;
                 $scope.trueShow = false;
-            } else if(selectedQuestion === 'trueFalse') {
+            } else if(selectedQuestion === 'trueorfalse') {
                 $scope.categoryShow = false;
                 $scope.multipleShow = false;
                 $scope.trueShow = true;
             }
         }
-    }
+
+        $scope.submitMultiple  = function() {
+            $http({
+                method: 'POST',
+                url: '/module/'+moduleId+'/assessment/'+assessmentId,
+                data: {"question": {"questiontype": selectedQuesType,"questions":$scope.multipleQues,
+                    "choices":[$scope.option1,$scope.option2,$scope.option3,$scope.option4],"answer":$scope.multipleAns} }
+
+            }).success(function (response) {
+                    console.log("Current Created assessment result::::",JSON.stringify(response));
+                    if(assessmentId == ""){
+                        assessmentId = response.ops[0]._id;
+                        alert(assessmentId);
+                    }
+                    $scope.successMsg = "Successfully submitted the assessment";
+                    $scope.successPanel = true;
+                    $scope.errorPanel = false;
+                    $scope.categoryShow = false;
+                    $scope.multipleShow = false;
+                    $scope.trueShow = false;
+
+            }).error(function (error) {
+                $scope.successPanel = false;
+                $scope.errorMsg = "Problem to create Module. Please try again";
+                $scope.errorPanel = true;
+            });
+        }
+
+        $scope.submitTrue = function(){
+            $http({
+                method: 'POST',
+                url: '/module/'+moduleId+'/assessment/'+assessmentId,
+                data: {"question": {"questiontype": selectedQuesType,"questions":$scope.booleanQuestion,
+                    "answer":$scope.radioAns} }
+
+            }).success(function (response) {
+                console.log("Current Created assessment result::::",JSON.stringify(response));
+                if(assessmentId == ""){
+                    assessmentId = response.ops[0]._id;
+                    alert(assessmentId);
+                }
+                $scope.successMsg = "Successfully submitted the assessment. Select other and proceed.";
+                $scope.successPanel = true;
+                $scope.errorPanel = false;
+                $scope.categoryShow = false;
+                $scope.multipleShow = false;
+                $scope.trueShow = false;
+
+            }).error(function (error) {
+                $scope.successPanel = false;
+                $scope.errorMsg = "Problem to create Module. Please try again";
+                $scope.errorPanel = true;
+            });
+        }
+
+    })
 </script>
 </body>
 </html>

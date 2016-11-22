@@ -14,5 +14,5 @@ exports.displayAdminAnalytics = function(req, res){
 };
 
 exports.displayAssesstmentCreation = function(req, res){
-    res.render('assessmentCreation', { title: 'Gamified LMS' });
+    res.render('assessmentCreation', { title: 'Gamified LMS', moduleId: req.param("moduleId") });
 };
