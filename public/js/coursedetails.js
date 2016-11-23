@@ -30,7 +30,7 @@ function courseController($scope, $http,$routeParams){
 	};
 	course.redirectQuiz = function(index){
 		if(true){
-			window.location = "/quiz";
+			window.location = "/quiz/"+quizId+"/course/"+courseId+"/module/"+moduleId+"/coursename/"+courseName;
 		}
 	};
 	course.topicLock = function(index){

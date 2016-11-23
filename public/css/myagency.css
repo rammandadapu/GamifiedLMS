@@ -8,7 +8,7 @@
 .course-text-content {
 	margin: 20px;
   	padding: 10px;
-  	width: 350px;
+  	width: 800px;
   	height: 279px;
   	overflow: auto;
   	border: 1px solid #d4d4d4;
@@ -30,7 +30,7 @@
 .multiple-choice-option {
 	margin:10px;
 	padding:5px;
-	width: 350px;
+	width: 320px;
   border-radius: 5px;
 }
 

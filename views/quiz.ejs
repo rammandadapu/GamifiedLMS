@@ -12,24 +12,27 @@
     <title>Gamified LMS - Learn while you have fun</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 
     <!-- Theme CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/application.css" rel="stylesheet">
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
-    <link href="css/agency.min.css" rel="stylesheet">        
-    <link href="css/myagency.css" rel="stylesheet">  
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/application.css" rel="stylesheet">
+    <link href="/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="/css/agency.min.css" rel="stylesheet">        
+    <link href="/css/myagency.css" rel="stylesheet">  
 
 
     <script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-route.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.2.0/ui-bootstrap-tpls.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -278,7 +281,7 @@
 
     <div id="page-wrapper">        
         <div class="row">    
-            <div class="col-lg-8">                        
+            <div class="col-lg-14">                        
                 <div class="panel panel-default">
                     <div class="panel-heading bg-org">
                         QUIZ - Earn Badges!
@@ -345,9 +348,10 @@
                         
                     </div>                                    
                     
-                    <button type="button" ng-click="validateQuiz()">Submit quiz</button>
-                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+                    <!--button type="button" ng-click="validateQuiz()">Submit quiz</button-->
+                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Submit</button>
                     <!-- Modal -->
+                    
                     <div id="myModal" class="modal fade" role="dialog">
                       <div class="modal-dialog">
 
@@ -360,26 +364,28 @@
                             <div class="modal-body">
                                 <div class="row">
                                     <div class="col-sm-4">
-                                        <img class="img-responsive img-centered" src="img/coursedetails/bronze.png" alt="">
+                                        <img class="img-responsive img-centered" src="/img/coursedetails/bronze.png" alt="">
                                     </div>
                                     <div class="col-sm-8" style="padding:20px;">
 
                                         <p>You have earned a new bronze badge.</p>
                                         <p>Share this on your profile!</p>
                                         <p>
-                                            <a href="https://www.facebook.com/" target="_blank"><img src="img/coursedetails/fb.png" width="40px" height="40px"></a>&nbsp;&nbsp;
-                                            <a href="https://www.linkedin.com/" target="_blank"><img src="img/coursedetails/link.png" width="40px" height="40px">&nbsp;&nbsp;
-                                            <a href="https://twitter.com/" target="_blank"><img src="img/coursedetails/twitter.png" width="40px" height="40px">
+                                            <a href="https://www.facebook.com/" target="_blank"><img src="/img/coursedetails/fb.png" width="40px" height="40px"></a>&nbsp;&nbsp;
+                                            <a href="https://www.linkedin.com/" target="_blank"><img src="/img/coursedetails/link.png" width="40px" height="40px"></a>&nbsp;&nbsp;
+                                            <a href="https://twitter.com/" target="_blank"><img src="/img/coursedetails/twitter.png" width="40px" height="40px"></a>
                                         </p>
 
                                     </div>
                                 </div>
                                 <div class="modal-footer">                                    
-                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Go to the next topic &gt;&gt;</button>
+                                    <button type="button" class="btn btn-primary" ng-click="openNext()">Close &gt;&gt;</button>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    </div>
+                    
                 </div>                            
             </div>
         </div>
@@ -388,23 +394,47 @@
     <script type="text/javascript">
         
         var app = angular.module('myapp', []);
-        app.controller('quizController', function($http, $scope, $location, $timeout) {                 
+        app.controller('quizController', function($http, $scope, $location, $timeout) {           
          $scope.quizId = <%- JSON.stringify(quizId) %>;
+         $scope.courseId = <%- JSON.stringify(courseId) %>;
+         $scope.moduleId = <%- JSON.stringify(moduleId) %>;
+         $scope.userId = <%- JSON.stringify(userId) %>;
          $scope.coursename = <%- JSON.stringify(coursename) %>;  
                      
-         /*$http({
+         $http({
                     method: 'GET',
-                    url: '/quiz/'+$scope.quizId             
+                    url: '/assessment/'+$scope.quizId             
                     
-                 }).success(function(response){                                 
-                      $scope.data = response;
+                 }).success(function(response){                                                       
+                      //alert(JSON.stringify(response[0].questions));                    
+                      //$scope.data = response[0].questions;
                 }).error(function(error){
                     alert("error");
                 }); 
-        });*/
+
+        /*$http({
+                    method: 'GET',
+                    url: '/pinkmonk'             
+                    
+                 }).success(function(response){                                                       
+                      alert(JSON.stringify(response));                    
+                      $scope.pinkys = response.pinky;
+                      $scope.monkeys = response.monkey;
+                }).error(function(error){
+                    alert("error");
+                }); 
+
+            $scope.pinky = ["a","b","c"];
+            $scope.monkey = ["1","2","3"];*/
+
         $scope.data = [{"questiontype":"categories","categories":["keywords","variables","datatypes"],"items":["int","area","length","class","help","float","else","desk","height"],"answer":[{"category":"keywords","items":["class","else","length"]},{"category":"variables","items":["help","desk","height","area"]},{"category":"datatypes","items":["int","float"]}]},
 {"questiontype":"multiplechoice","question":"What is the minimum value of a byte?","choices":["-127","0","127","128"],"answer":"-127"},
 {"questiontype":"trueorfalse","question":"There is no automatic garbage collection in Java.","answer":"false"}];
+
+
+        $scope.openNext = function() {           
+            window.$location = "/prjdflk";
+        }
 
         $scope.validateQuiz = function() {                        
             var quizpassed = true;
@@ -413,8 +443,7 @@
                     if(question.questiontype == "categories") {             
                         for(var cat=0; cat<question.categories.length; cat++) {                        
                             var ul = document.getElementById("category_"+key+"_"+cat); 
-                            var categoryName = question.categories[cat]; 
-                            alert(categoryName);                      
+                            var categoryName = question.categories[cat];                             
                             var items = ul.getElementsByTagName("li");
                             var itemArray = [];
                             for (var i = 0; i < items.length; ++i) {
@@ -428,15 +457,14 @@
 
                             answerArray.sort();
 
-                            alert(JSON.stringify(itemArray));
-                            alert(JSON.stringify(answerArray));
+                            //alert(JSON.stringify(itemArray));
+                            //alert(JSON.stringify(answerArray));
 
                             var same = false;
 
                             if(itemArray.length == answerArray.length) {
                                 same = true;   
-                                for(var j=0; j<itemArray.length; j++) {
-                                    alert(itemArray[j]+" "+answerArray[j]);
+                                for(var j=0; j<itemArray.length; j++) {                                    
                                     if(itemArray[j] != answerArray[j]) {
                                         same = false;
                                         break;
@@ -464,16 +492,21 @@
             });
             if(quizpassed == true) {
                 alert("yay! you passed");
+                $http({
+                    method: 'POST',
+                    url: '/course/'+$scope.courseId+'/module/'+$scope.moduleId+'/user/'+$scope.userId             
+                    
+                 }).success(function(response){                                 
+                      $scope.completed = response;
+                }).error(function(error){
+                    alert("error");
+                });                    
             }
             else {
                 alert("oops! try again");
-            }
-
-            
-            };
-        
-        
-});
+            }            
+        }                
+    });
 
         
         
