@@ -74,7 +74,7 @@
     </nav>
 
     <!-- Header -->
-    <section id="register" ng-app="" ng-controller="personController">
+    <section id="register" ng-app="" ng-controller="personController" ng-show="loginVal">
         <div class="container">
             <div class="intro-text" style="margin-left:40px;">
                 <div class="container">
@@ -294,7 +294,7 @@
 
     <script>
     function personController($scope,$http,$location) {
-        
+        $scope.loginVal = true;
         $scope.signUp = function() {                
             $http({
                 method: 'POST',
@@ -335,15 +335,18 @@
                 data: { "email": $scope.loginEmail, "password": $scope.loginPassword }              
              }).success(function(response){
                
-                alert(JSON.stringify(response));                
+                //alert(JSON.stringify(response));                
                 if(response.status == "success")
                     {
-                        $scope.invalidLoginVal = "";
-                        window.location = '/courseDetails';                     
+                        $scope.loginVal = false;
+                        //window.location = '/courseDetails';                     
+                        alert("Successful");
+                        //href="#portfolio";
                     }                          
                 else
                     {
                         $scope.invalidLoginVal = "Email/Password invalid!";
+                        alert("Invalid password. Please try again.")
                     }                   
             }).error(function(error){
                 //document.getElementById("error").innerHTML = "An error occurred!"
