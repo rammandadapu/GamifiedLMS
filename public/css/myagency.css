@@ -176,3 +176,7 @@
 #searchLink{
   display: none;
   }
+  .bg-light-gray{
+  background-image: url("../img/bg2.jpg");
+}
+

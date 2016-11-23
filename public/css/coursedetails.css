@@ -1,3 +1,4 @@
+
 .search-box {
 	float: right;
 	margin: 0;
@@ -5,6 +6,7 @@
 .course-heading {
 	text-align: center;
 	margin: 15px;
+	font-size: 24px;
 }
 .btn-rnd {
 	border-radius: 15px;
@@ -57,20 +59,22 @@
 }
 .course-box{
 	height: 480px; 
-	background: #ccffcc; 
+	/*background: #ccffcc;*/
+	background: #fff; 
 	box-shadow: 10px 10px 5px #888888; 
-	border-radius: 5px; 
+	/*border-radius: 5px; */
 	padding: 20px; 
 	overflow:auto;
 }
 .user-box {
 	/*width: 415px;*/
 	height: 480px; 
-	background: #ccffcc; 
+	/*background: #ccffcc;*/
+	background: #fff;
 	box-shadow: 10px 10px 5px #888888; 
-	border-radius: 5px; 
+	/*border-radius: 5px; */
 	margin:0 auto;
-	overflow:auto;
+	/*overflow:auto;*/
 }
 .user-sm {
 	height: 200px; 
@@ -78,7 +82,7 @@
 	display: block;
 	margin: 20px auto;
 	overflow:auto;
-	background:#ccffcc;
+	/*background:#ccffcc;*/
 }
 .user-lg {
 	height: 300px; 
@@ -86,14 +90,14 @@
 	display: block;
 	margin: 0px auto;
 	overflow:auto;
-	background:#ccffcc;
+	background:#fff;
 }
 .tbl-styling{
-	border:3px solid #10a2a2;
+	/*border:3px solid #10a2a2;*/
 }
 .tbl-styling caption{
 	text-align: center;
-	background-color: #ccffcc;
+	/*background-color: #ccffcc;*/
 }
 .tbl-styling th,.tbl-styling td{
 	padding: 5px;
@@ -108,5 +112,12 @@
 .social-icon{
 	width:30px;
 	hieght: 30px;
+}
+.row-style{
+	height: 65px;
+}
+.bg-light-blue{
+	background-image: url("../img/bg3.png");
+	background-repeat: repeat-y;
 }
 

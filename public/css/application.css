@@ -14,7 +14,11 @@ header {
     line-height: 80px;
     font-weight: 100; }
 #mainNav {
-  background-color: #10a2a2;
+  /*background-color: #10a2a2;*/
+  background: #5C258D; /* fallback for old browsers */
+background: -webkit-linear-gradient(right, #5C258D, #4389A2);
+background: -o-linear-gradient(right, #5C258D, #4389A2);
+background: linear-gradient(to left, #5C258D, #4389A2); /* Chrome 10-25, Safari 5.1-6 */ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 #twitter-widget-0 {
   width: 1200px !important;
@@ -36,7 +40,7 @@ header {
   width: 170px; }
 
 .bg-org {
-  background: linear-gradient(orange, #ff6a1a); 
+  background: linear-gradient(orange, #ff6a1a);
 }
 
 .bg-ylw {
@@ -62,7 +66,9 @@ header {
 
 .input-bsc {
   width: 250px;
-  border-radius: 5px; }
+  border-radius: 5px;
+  outline: none;
+  font-size: 20px }
 
 .search-box {
   margin-top: 15px; }

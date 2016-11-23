@@ -37,13 +37,13 @@
 		<div class="col-xs-6">
 			<table class="tbl-styling" style="width: 100%;">
 				<caption>LEADERBOARDS</caption>
-				<tr>
+				<tr class="row-style">
 					<th class="bg-org">S.No</th>
 					<th class="bg-org">Name</th>
 					<th class="bg-org">Title</th>
 					<th class="bg-org">Points</th>	
 				</tr>
-				<tr ng-repeat="rank in user.rankings">
+				<tr ng-repeat="rank in user.rankings" class="row-style">
 					<td>{{$index+1}}</td>
 					<td>{{rank.name}}</td>
 					<td>{{rank.title}}</td>

@@ -42,17 +42,29 @@ function userController($scope){
 	}];
 
 	user.rankings =[{
-		name: "Harry Potter",
-		title: "Wizard",
-		points: 1050
+		name: "Jon Wayz",
+		title: "Advanced",
+		points: 1550
 	},{
-		name: "Hermione Granger",
-		title: "Wizard",
+		name: "Alicia Zimmer",
+		title: "Adavanced",
+		points: 1055
+	},{
+		name: "Vanessa Warder",
+		title: "Intermediate",
+		points: 980
+	},{
+		name: "Bill Anderson",
+		title: "Intermediate",
 		points: 900
 	},{
-		name: "Ron Weasley",
+		name: "Victor Igor",
 		title: "Intermediate",
-		points: 500
+		points: 890
+	},{
+		name: "Tarik Ghebeish",
+		title: "Intermediate",
+		points: 820
 	}];
 
 	user.goals = [{
