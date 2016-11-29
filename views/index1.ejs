@@ -81,7 +81,41 @@
                     
                     <div class="row">
                         <div class="col-lg-5" style="margin-right:50px;">
-                            <div class="row">
+                        <div class="panel panel-default" style="border: none">
+                          <div class="panel-heading" style="background: #fed136">
+                            <h3 class="panel-title">Register here</h3>
+                          </div>
+                          <div class="panel-body">
+                            <form name="register" id="contactForm" novalidate>
+                                <div class="row">
+                                    <div class="col-lg-13 text-center">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="First name *" ng-model="fname" required data-validation-required-message="Please enter your name.">
+                                            <span class="help-block text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Last name *" ng-model="lname" required data-validation-required-message="Please enter your name.">
+                                            <span class="help-block text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" placeholder="Email *" ng-model="email" required data-validation-required-message="Please enter your email address.">
+                                            <span class="help-block text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control" placeholder="Password *" ng-model="password" required data-validation-required-message="Please enter your phone number.">
+                                            <span class="help-block text-danger"></span>
+                                        </div>
+                                                                       
+                                    <div class="clearfix"></div>
+                                    
+                                        <div id="success"></div>
+                                        <button type="submit" class="btn btn-warning" ng-click="signUp()">Sign me up!</button>
+                                    </div>
+                                </div>
+                            </form>
+                          </div>
+                        </div>
+                            <!-- <div class="row">
                                 <h2 class="intro-lead-in">Register here</h2>
                             </div>
                             <form name="register" id="contactForm" novalidate>
@@ -110,11 +144,38 @@
                                         <button type="submit" class="btn btn-xl" ng-click="signUp()">Sign me up!</button>
                                     </div>
                                 </div>
-                            </form>
+                            </form> -->
                         </div>
 
                         <div class="col-lg-5" style="margin-left:50px;">
-                            <div class="row">
+                            <div class="panel panel-default" style="border: none">
+                              <div class="panel-heading" style="background: #fed136">
+                                <h3 class="panel-title">Already a member?</h3>
+                              </div>
+                              <div class="panel-body">
+                                <form name="register" id="contactForm" novalidate>
+                                <div class="row">
+                                    <div class="col-lg-13 text-center">
+                                        
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" placeholder="Email *" ng-model="loginEmail" required data-validation-required-message="Please enter your email address.">
+                                            <span class="help-block text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control" placeholder="Password *" ng-model="loginPassword" required data-validation-required-message="Please enter your phone number.">
+                                            <span class="help-block text-danger"></span>
+                                        </div>
+                                                                       
+                                    <div class="clearfix"></div>
+                                    
+                                        <div id="success"></div>
+                                        <button type="submit" class="btn btn-warning" ng-click="signin()">Sign in</button>
+                                    </div>
+                                </div>
+                            </form>
+                              </div>
+                            </div>
+                            <!-- <div class="row">
                                 <h2 class="intro-lead-in">Already a member?</h2>
                             </div>
                             <form name="register" id="contactForm" novalidate>
@@ -136,7 +197,7 @@
                                         <button type="submit" class="btn btn-xl" ng-click="signin()">Sign in</button>
                                     </div>
                                 </div>
-                            </form>
+                            </form> -->
                         </div>
                     </div>
                 </div>
