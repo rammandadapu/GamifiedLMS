@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <div id="coursemodule" class="col-xs-4" ng-controller="courseController as cctrl">
-	<div class="course-heading">
-			{{cctrl.courseName}}
-	</div>
-	<div class="course-box">
-			<div ng-repeat="topic in cctrl.courseDetails">
+<div class="row">
+	<div class="panel panel-default course-box">
+	  <div class="panel-heading bg-ylw">
+	    <h3 class="panel-title">{{cctrl.courseName}}</h3>
+	  </div>
+	  <div class="panel-body">
+	    <div ng-repeat="topic in cctrl.courseDetails">
 				<div ng-if="$index!=0" class="line elem-center"></div>
 					<div class="panel panel-default elem-center" ng-click="cctrl.redirect(topic[0]._id)"style="width:200px;" ng-class="cctrl.getTopicPtr($index)">
 							<div class="panel-heading bg-blue" style="text-align:center">							
@@ -21,5 +23,7 @@
 						<i class="fa fa-lg" ng-class="cctrl.topicLock($index)" aria-hidden="true"></i>
 					</button>
 			</div>
+	  </div>
 	</div>
+</div>
 </div>

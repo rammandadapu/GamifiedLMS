@@ -58,14 +58,8 @@
   opacity: .8; 
 }
 .course-title-index{
-  width:200px;
-  height: 50px;
   background-color: #a3d6d6;
-  margin: auto;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
   text-transform: uppercase;
-  vertical-align: middle;
 }
 .box-center{
     display: flex;
@@ -74,7 +68,7 @@
 }
 .course-thumbnail-button {
 	position: absolute;
-	top: 75px;
+	top: 105px;
 	left: 130px;
 }
 
@@ -134,7 +128,7 @@
 
 .modalDialog > div {
   width: 700px;
-  height: 350px;
+  height: 400px;
   overflow: auto;
   position: relative;
   margin: 10% auto;
@@ -169,7 +163,7 @@
 }
 
 #openModal .course-thumbnail-button{
-  left:55px;
+  left:105px;
 }
 
 .close:hover { background: #00d9ff; }

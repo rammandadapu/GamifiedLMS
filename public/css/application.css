@@ -71,7 +71,13 @@ background: linear-gradient(to left, #5C258D, #4389A2); /* Chrome 10-25, Safari 
   font-size: 20px }
 
 .search-box {
-  margin-top: 15px; }
+  margin-top: 15px; 
+}
+
+.search-go {
+  position: absolute;
+  margin-left: 5px;
+}
 
 .content-layout {
   background-color: black;
@@ -79,8 +85,6 @@ background: linear-gradient(to left, #5C258D, #4389A2); /* Chrome 10-25, Safari 
   margin-left: 30px;
   border-radius: 15px;
   margin-bottom: 20px; }
- .course-ov {
-    margin: 25px 0; }
 
 /*# sourceMappingURL=application.css.map */
 
