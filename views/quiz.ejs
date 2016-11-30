@@ -288,8 +288,8 @@
 
                     </div>
 
-                    <a href="http://www.animatedimages.org/cat-clocks-137.htm">
-                        <img align="right" src="http://www.animatedimages.org/data/media/137/animated-clock-image-0065.gif" border="0" alt="animated-clock-image-0065"/></a>
+                    
+                        <label style="text-align:right;display:block;margin-right:20px">Time taken: {{hours}} hours, {{minutes}} minutes, {{seconds}} seconds</label>                        
                    
                         <div class="panel-body">
                     <div ng-repeat="question in data" ng-init="questionNum = $index">
@@ -399,11 +399,12 @@
     <script type="text/javascript">
         
         var app = angular.module('myapp', []);
-        app.controller('quizController', function($http, $scope, $location, $timeout) {           
+        app.controller('quizController', function($http, $scope, $location, $timeout) {   
+            $scope.timerWithTimeout = 0;        
          $scope.quizId = <%- JSON.stringify(quizId) %>;
          $scope.courseId = <%- JSON.stringify(courseId) %>;
          $scope.moduleId = <%- JSON.stringify(moduleId) %>;
-         $scope.userId = <%- JSON.stringify(userId) %>;
+         //$scope.userId = <%- JSON.stringify(userId) %>;
          $scope.coursename = <%- JSON.stringify(coursename) %>;  
                      
          $http({
@@ -416,6 +417,22 @@
                 }).error(function(error){
                     alert("error");
                 }); 
+
+            
+           
+            
+            if($scope.myTimeout){
+              $timeout.cancel($scope.myTimeout);
+            }
+            $scope.onTimeout = function(){
+                $scope.timerWithTimeout++;
+                $scope.myTimeout = $timeout($scope.onTimeout,1000);
+                $scope.hours= parseInt($scope.timerWithTimeout % 86400 / 3600);
+                $scope.minutes= parseInt($scope.timerWithTimeout % 86400 % 3600 / 60);
+                $scope.seconds= parseInt($scope.timerWithTimeout % 86400 % 3600 % 60);
+            }
+            $scope.myTimeout = $timeout($scope.onTimeout,1000);
+          
 
         /*$http({
                     method: 'GET',
