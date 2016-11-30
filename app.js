@@ -64,6 +64,10 @@ app.get('/course/:courseid/module', course.getAllModulesofCourse);
 app.get('/assessment/:assessmentid', course.getAssessment);
 app.get('/search/:q', course.searchCourse);
 
+app.get('/userprofile', function(req,res) {
+    res.render('userprofile.ejs');
+})
+
 app.get('/pinkmonk',function(req,res) {
     var pinky = ["a","b","c"];
     var monkey = ["1","2","3"];
