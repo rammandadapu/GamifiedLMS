@@ -307,12 +307,13 @@
         app.controller('topicDetailController', function($http, $scope, $location, $routeParams, $sce) {                 
          $scope.moduleId = <%- JSON.stringify(moduleId) %>;
          $scope.coursename = <%- JSON.stringify(coursename) %>;
+         console.log($scope.moduleId,$scope.coursename);
          $http({
                     method: 'GET',
                     url: '/module/'+$scope.moduleId             
-                    
+                    //url: '/module/5815622626dd983e536198fb'
                  }).success(function(response){             
-                    
+                    console.log(response);
                       $scope.content = response[0].content;
                       //$scope.videourl = $sce.trustAsResourceUrl(response[0].videourl);
                       $scope.videourl = response[0].videourl;

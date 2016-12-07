@@ -19,41 +19,42 @@
     <!--</div>-->
     <div class="col-xs-12 search-box text-right">
       <input type="search" name="q" ng-model=searchTerm class="input-bsc" placeholder="search for course">
-      <button ng-click="searchCourse()">Go!</button>
+      <button ng-click="searchCourse()" class="btn btn-warning search-go">Go!</button>
     </div>
   </div>
   
   <div class="row">
     <div class="col-xs-4">
-      <button type="submit" class="btn btn-xl" ng-click="courseCreation()">Click to Add new course!</button>
+      <button type="submit" class="btn btn-primary" ng-click="courseCreation()">Click to Add new course!</button>
     </div>
   </div>
   <br>
   <div class="row">
     <div class="row" style="height: 500px;overflow-y: auto;">
-      <div ng-repeat="list in clc.encourses" class="col-xs-4 course-ov">
-        <div>
-          <div>
+      <div ng-repeat="list in clc.encourses" class="col-xs-4">
+        <div class="panel panel-default">
+          <div class="panel-body">
             <img class="img-course" ng-src={{list.imgurl}}>
-            <div class="course-title-index box-center">{{list.name}}</div>
           </div>
-          <button class="btn-basics btn-view course-thumbnail-button hvr-grow-shadow" ng-click="goToCourse(list._id,list.name)">View Course</button>
+          <div class="panel-footer box-center course-title-index">{{list.name}}</div>
         </div>
+        <button class="btn btn-default btn-basics btn-view course-thumbnail-button hvr-grow-shadow" ng-click="goToCourse(list._id,list.name)">View Course</button>
       </div>
     </div>
     <br>
   <div class="row">
     <div class="col-xs-4">
-      <button type="submit" class="btn btn-xl">Trending Courses</button>
+      <button type="submit" class="btn btn-primary">Trending Courses</button>
     </div>
   </div>
   <div class="row">
-    <div ng-repeat="list in clc.tcourses" class="col-xs-4 course-ov">
-      <div>
-        <img class="img-course" ng-src={{list.img}}>
-        <div class="course-title-index box-center">{{list.course}}</div>
+    <div ng-repeat="list in clc.tcourses" class="col-xs-4">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <img class="img-course" ng-src={{list.img}}>
+        </div>
+        <div class="panel-footer box-center course-title-index">{{list.course}}</div>
       </div>
-      <!--<button class="btn-basics btn-view course-thumbnail-button hvr-grow-shadow">Enroll Course</button>-->
     </div>
   </div>
 </div>

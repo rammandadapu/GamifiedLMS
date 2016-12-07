@@ -94,7 +94,7 @@ exports.getModuleDetails = function (req, res) {
     } else {
         columnFilter = {};
     }
-    utilCode.handleResponse('module', query, columnFilter, res);
+    utilCode.handleResponse('modules', query, columnFilter, res);
 }
 
 exports.getAssessment = function (req, res) {
